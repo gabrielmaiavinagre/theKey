@@ -13,12 +13,14 @@
 		DB783EBB20CDFE8900401FF8 /* LoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB783EB920CDFE8900401FF8 /* LoginViewController.storyboard */; };
 		DB783EBD20CDFE8900401FF8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB783EBC20CDFE8900401FF8 /* Assets.xcassets */; };
 		DB783EC020CDFE8900401FF8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB783EBE20CDFE8900401FF8 /* LaunchScreen.storyboard */; };
-		DB783ECB20CE395800401FF8 /* SIteInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB783ECA20CE395800401FF8 /* SIteInfo.swift */; };
+		DB783ECB20CE395800401FF8 /* Secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB783ECA20CE395800401FF8 /* Secret.swift */; };
 		DB783ECE20CE3FC100401FF8 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB783ECD20CE3FC100401FF8 /* String.swift */; };
 		DB783ED020CE46D700401FF8 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB783ECF20CE46D700401FF8 /* UserInfo.swift */; };
 		DBC5FB3B20D0E20900666634 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC5FB3A20D0E20900666634 /* UIColor.swift */; };
 		DBC5FB3D20D0E65900666634 /* SecretsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC5FB3C20D0E65900666634 /* SecretsTableViewController.swift */; };
 		DBC5FB3F20D0E67C00666634 /* SecretsTableViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBC5FB3E20D0E67C00666634 /* SecretsTableViewController.storyboard */; };
+		DBC5FB4220D0EC9B00666634 /* SecretTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC5FB4120D0EC9B00666634 /* SecretTableViewCell.swift */; };
+		DBC5FB4420D0ED9300666634 /* NoSecretsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC5FB4320D0ED9300666634 /* NoSecretsTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,12 +33,14 @@
 		DB783EBC20CDFE8900401FF8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DB783EBF20CDFE8900401FF8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DB783EC120CDFE8900401FF8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DB783ECA20CE395800401FF8 /* SIteInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIteInfo.swift; sourceTree = "<group>"; };
+		DB783ECA20CE395800401FF8 /* Secret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secret.swift; sourceTree = "<group>"; };
 		DB783ECD20CE3FC100401FF8 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		DB783ECF20CE46D700401FF8 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		DBC5FB3A20D0E20900666634 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		DBC5FB3C20D0E65900666634 /* SecretsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretsTableViewController.swift; sourceTree = "<group>"; };
 		DBC5FB3E20D0E67C00666634 /* SecretsTableViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SecretsTableViewController.storyboard; sourceTree = "<group>"; };
+		DBC5FB4120D0EC9B00666634 /* SecretTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretTableViewCell.swift; sourceTree = "<group>"; };
+		DBC5FB4320D0ED9300666634 /* NoSecretsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoSecretsTableViewCell.swift; sourceTree = "<group>"; };
 		F09213EA2BFC12D5F771C808 /* Pods-TheKey.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheKey.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TheKey/Pods-TheKey.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -104,7 +108,7 @@
 		DB783EC720CE389600401FF8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				DB783ECA20CE395800401FF8 /* SIteInfo.swift */,
+				DB783ECA20CE395800401FF8 /* Secret.swift */,
 				DB783ECF20CE46D700401FF8 /* UserInfo.swift */,
 			);
 			path = Model;
@@ -123,6 +127,7 @@
 		DB783EC920CE38BF00401FF8 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				DBC5FB4020D0EC6F00666634 /* cells */,
 				DB783EB720CDFE8900401FF8 /* LoginViewController.swift */,
 				DBC5FB3C20D0E65900666634 /* SecretsTableViewController.swift */,
 			);
@@ -136,6 +141,15 @@
 				DBC5FB3A20D0E20900666634 /* UIColor.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		DBC5FB4020D0EC6F00666634 /* cells */ = {
+			isa = PBXGroup;
+			children = (
+				DBC5FB4120D0EC9B00666634 /* SecretTableViewCell.swift */,
+				DBC5FB4320D0ED9300666634 /* NoSecretsTableViewCell.swift */,
+			);
+			path = cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -273,8 +287,10 @@
 				DB783EB820CDFE8900401FF8 /* LoginViewController.swift in Sources */,
 				DBC5FB3D20D0E65900666634 /* SecretsTableViewController.swift in Sources */,
 				DBC5FB3B20D0E20900666634 /* UIColor.swift in Sources */,
-				DB783ECB20CE395800401FF8 /* SIteInfo.swift in Sources */,
+				DB783ECB20CE395800401FF8 /* Secret.swift in Sources */,
 				DB783ECE20CE3FC100401FF8 /* String.swift in Sources */,
+				DBC5FB4220D0EC9B00666634 /* SecretTableViewCell.swift in Sources */,
+				DBC5FB4420D0ED9300666634 /* NoSecretsTableViewCell.swift in Sources */,
 				DB783ED020CE46D700401FF8 /* UserInfo.swift in Sources */,
 				DB783EB620CDFE8900401FF8 /* AppDelegate.swift in Sources */,
 			);
