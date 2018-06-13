@@ -42,7 +42,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func createAccountAction(_ sender: UIButton) {
-        
+   
+       let storyBoard = UIStoryboard(name: "SecretsTableViewController", bundle: nil)
+        if let secretVC = storyBoard.instantiateInitialViewController() {
+        self.navigationController?.pushViewController(secretVC, animated: true)
+        }
     }
     
     //Lifecycle functions
@@ -51,9 +55,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         viewControllerConfigurations()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+//        self.navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
     //Configure viewcontroller
     private func viewControllerConfigurations() {
-        
+//        self.navigationController?.setNavigationBarHidden(true, animated: false)
         self.userInfo = UserInfo(username: "", password: "")
         self.incorrectPasswordLabel.isHidden = true
         self.usernameTextField.delegate = self

@@ -25,7 +25,7 @@ class SecretTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func configureCell(secret: SiteInfo) {
+    func configureCell(secret: Secret) {
         self.siteImage.image = #imageLiteral(resourceName: "passwordIcon")
         self.siteNameLabel.text = secret.getSiteName()
         self.siteUsernameLabel.text = secret.getUsernamer()

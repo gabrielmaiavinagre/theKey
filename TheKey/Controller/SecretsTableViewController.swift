@@ -14,7 +14,7 @@ class SecretsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        viewControllerConfigurations()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -22,9 +22,16 @@ class SecretsTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
-
+    //Configure viewcontroller
+    private func viewControllerConfigurations() {
+        if let nav = self.navigationController {
+            print("existe")
+        }
+//        self.navigationController?.setNavigationBarHidden(false, animated: false)
+        self.navigationController?.navigationBar.backgroundColor = UIColor.blue
+    }
+    
     // MARK: - Table view data source
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         
