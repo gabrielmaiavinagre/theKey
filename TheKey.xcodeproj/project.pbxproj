@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		1C4CB59B580AA4691B8F29D7 /* Pods_TheKey.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E590C373FE35CDB916FD3CA /* Pods_TheKey.framework */; };
+		DB034F4620D17CAE00576DC0 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB034F4520D17CAE00576DC0 /* BaseViewController.swift */; };
+		DB034F4820D183A700576DC0 /* SecretDetailsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB034F4720D183A700576DC0 /* SecretDetailsViewController.storyboard */; };
+		DB034F4A20D19B7700576DC0 /* SecretDetailsImageAndButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB034F4920D19B7700576DC0 /* SecretDetailsImageAndButtonTableViewCell.swift */; };
+		DB034F4C20D19CC500576DC0 /* SecretDetailsPasswordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB034F4B20D19CC500576DC0 /* SecretDetailsPasswordTableViewCell.swift */; };
+		DB034F4E20D19E4200576DC0 /* SecretDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB034F4D20D19E4200576DC0 /* SecretDetailsViewController.swift */; };
+		DB034F5020D1C36700576DC0 /* NewSecretViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB034F4F20D1C36700576DC0 /* NewSecretViewController.swift */; };
+		DB034F5220D1C38400576DC0 /* NewSecretViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB034F5120D1C38400576DC0 /* NewSecretViewController.storyboard */; };
 		DB783EB620CDFE8900401FF8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB783EB520CDFE8900401FF8 /* AppDelegate.swift */; };
 		DB783EB820CDFE8900401FF8 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB783EB720CDFE8900401FF8 /* LoginViewController.swift */; };
 		DB783EBB20CDFE8900401FF8 /* LoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB783EB920CDFE8900401FF8 /* LoginViewController.storyboard */; };
@@ -17,8 +24,8 @@
 		DB783ECE20CE3FC100401FF8 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB783ECD20CE3FC100401FF8 /* String.swift */; };
 		DB783ED020CE46D700401FF8 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB783ECF20CE46D700401FF8 /* UserInfo.swift */; };
 		DBC5FB3B20D0E20900666634 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC5FB3A20D0E20900666634 /* UIColor.swift */; };
-		DBC5FB3D20D0E65900666634 /* SecretsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC5FB3C20D0E65900666634 /* SecretsTableViewController.swift */; };
-		DBC5FB3F20D0E67C00666634 /* SecretsTableViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBC5FB3E20D0E67C00666634 /* SecretsTableViewController.storyboard */; };
+		DBC5FB3D20D0E65900666634 /* SecretsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC5FB3C20D0E65900666634 /* SecretsViewController.swift */; };
+		DBC5FB3F20D0E67C00666634 /* SecretsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBC5FB3E20D0E67C00666634 /* SecretsViewController.storyboard */; };
 		DBC5FB4220D0EC9B00666634 /* SecretTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC5FB4120D0EC9B00666634 /* SecretTableViewCell.swift */; };
 		DBC5FB4420D0ED9300666634 /* NoSecretsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC5FB4320D0ED9300666634 /* NoSecretsTableViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -26,6 +33,13 @@
 /* Begin PBXFileReference section */
 		1E590C373FE35CDB916FD3CA /* Pods_TheKey.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TheKey.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B40A760382F462630C8D541B /* Pods-TheKey.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheKey.release.xcconfig"; path = "Pods/Target Support Files/Pods-TheKey/Pods-TheKey.release.xcconfig"; sourceTree = "<group>"; };
+		DB034F4520D17CAE00576DC0 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		DB034F4720D183A700576DC0 /* SecretDetailsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SecretDetailsViewController.storyboard; sourceTree = "<group>"; };
+		DB034F4920D19B7700576DC0 /* SecretDetailsImageAndButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretDetailsImageAndButtonTableViewCell.swift; sourceTree = "<group>"; };
+		DB034F4B20D19CC500576DC0 /* SecretDetailsPasswordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretDetailsPasswordTableViewCell.swift; sourceTree = "<group>"; };
+		DB034F4D20D19E4200576DC0 /* SecretDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretDetailsViewController.swift; sourceTree = "<group>"; };
+		DB034F4F20D1C36700576DC0 /* NewSecretViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSecretViewController.swift; sourceTree = "<group>"; };
+		DB034F5120D1C38400576DC0 /* NewSecretViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewSecretViewController.storyboard; sourceTree = "<group>"; };
 		DB783EB220CDFE8900401FF8 /* TheKey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheKey.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB783EB520CDFE8900401FF8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DB783EB720CDFE8900401FF8 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -37,8 +51,8 @@
 		DB783ECD20CE3FC100401FF8 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		DB783ECF20CE46D700401FF8 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		DBC5FB3A20D0E20900666634 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
-		DBC5FB3C20D0E65900666634 /* SecretsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretsTableViewController.swift; sourceTree = "<group>"; };
-		DBC5FB3E20D0E67C00666634 /* SecretsTableViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SecretsTableViewController.storyboard; sourceTree = "<group>"; };
+		DBC5FB3C20D0E65900666634 /* SecretsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretsViewController.swift; sourceTree = "<group>"; };
+		DBC5FB3E20D0E67C00666634 /* SecretsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SecretsViewController.storyboard; sourceTree = "<group>"; };
 		DBC5FB4120D0EC9B00666634 /* SecretTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretTableViewCell.swift; sourceTree = "<group>"; };
 		DBC5FB4320D0ED9300666634 /* NoSecretsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoSecretsTableViewCell.swift; sourceTree = "<group>"; };
 		F09213EA2BFC12D5F771C808 /* Pods-TheKey.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheKey.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TheKey/Pods-TheKey.debug.xcconfig"; sourceTree = "<group>"; };
@@ -119,7 +133,9 @@
 			children = (
 				DB783EBE20CDFE8900401FF8 /* LaunchScreen.storyboard */,
 				DB783EB920CDFE8900401FF8 /* LoginViewController.storyboard */,
-				DBC5FB3E20D0E67C00666634 /* SecretsTableViewController.storyboard */,
+				DBC5FB3E20D0E67C00666634 /* SecretsViewController.storyboard */,
+				DB034F4720D183A700576DC0 /* SecretDetailsViewController.storyboard */,
+				DB034F5120D1C38400576DC0 /* NewSecretViewController.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -129,7 +145,10 @@
 			children = (
 				DBC5FB4020D0EC6F00666634 /* cells */,
 				DB783EB720CDFE8900401FF8 /* LoginViewController.swift */,
-				DBC5FB3C20D0E65900666634 /* SecretsTableViewController.swift */,
+				DB034F4520D17CAE00576DC0 /* BaseViewController.swift */,
+				DB034F4D20D19E4200576DC0 /* SecretDetailsViewController.swift */,
+				DB034F4F20D1C36700576DC0 /* NewSecretViewController.swift */,
+				DBC5FB3C20D0E65900666634 /* SecretsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -147,6 +166,8 @@
 			isa = PBXGroup;
 			children = (
 				DBC5FB4120D0EC9B00666634 /* SecretTableViewCell.swift */,
+				DB034F4920D19B7700576DC0 /* SecretDetailsImageAndButtonTableViewCell.swift */,
+				DB034F4B20D19CC500576DC0 /* SecretDetailsPasswordTableViewCell.swift */,
 				DBC5FB4320D0ED9300666634 /* NoSecretsTableViewCell.swift */,
 			);
 			path = cells;
@@ -164,7 +185,6 @@
 				DB783EAF20CDFE8900401FF8 /* Frameworks */,
 				DB783EB020CDFE8900401FF8 /* Resources */,
 				129E3875BEA3A8F993E007AE /* [CP] Embed Pods Frameworks */,
-				2467F115EDB35F9A37562B5D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -214,7 +234,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DBC5FB3F20D0E67C00666634 /* SecretsTableViewController.storyboard in Resources */,
+				DB034F5220D1C38400576DC0 /* NewSecretViewController.storyboard in Resources */,
+				DB034F4820D183A700576DC0 /* SecretDetailsViewController.storyboard in Resources */,
+				DBC5FB3F20D0E67C00666634 /* SecretsViewController.storyboard in Resources */,
 				DB783EC020CDFE8900401FF8 /* LaunchScreen.storyboard in Resources */,
 				DB783EBD20CDFE8900401FF8 /* Assets.xcassets in Resources */,
 				DB783EBB20CDFE8900401FF8 /* LoginViewController.storyboard in Resources */,
@@ -244,21 +266,6 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TheKey/Pods-TheKey-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		2467F115EDB35F9A37562B5D /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TheKey/Pods-TheKey-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		6B13880886452C818C427429 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -285,13 +292,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB783EB820CDFE8900401FF8 /* LoginViewController.swift in Sources */,
-				DBC5FB3D20D0E65900666634 /* SecretsTableViewController.swift in Sources */,
+				DB034F5020D1C36700576DC0 /* NewSecretViewController.swift in Sources */,
+				DB034F4C20D19CC500576DC0 /* SecretDetailsPasswordTableViewCell.swift in Sources */,
+				DBC5FB3D20D0E65900666634 /* SecretsViewController.swift in Sources */,
 				DBC5FB3B20D0E20900666634 /* UIColor.swift in Sources */,
 				DB783ECB20CE395800401FF8 /* Secret.swift in Sources */,
 				DB783ECE20CE3FC100401FF8 /* String.swift in Sources */,
+				DB034F4620D17CAE00576DC0 /* BaseViewController.swift in Sources */,
 				DBC5FB4220D0EC9B00666634 /* SecretTableViewCell.swift in Sources */,
 				DBC5FB4420D0ED9300666634 /* NoSecretsTableViewCell.swift in Sources */,
 				DB783ED020CE46D700401FF8 /* UserInfo.swift in Sources */,
+				DB034F4A20D19B7700576DC0 /* SecretDetailsImageAndButtonTableViewCell.swift in Sources */,
+				DB034F4E20D19E4200576DC0 /* SecretDetailsViewController.swift in Sources */,
 				DB783EB620CDFE8900401FF8 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
