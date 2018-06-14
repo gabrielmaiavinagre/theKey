@@ -15,6 +15,8 @@
 		DB034F4E20D19E4200576DC0 /* SecretDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB034F4D20D19E4200576DC0 /* SecretDetailsViewController.swift */; };
 		DB034F5020D1C36700576DC0 /* NewSecretViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB034F4F20D1C36700576DC0 /* NewSecretViewController.swift */; };
 		DB034F5220D1C38400576DC0 /* NewSecretViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB034F5120D1C38400576DC0 /* NewSecretViewController.storyboard */; };
+		DB034F5420D2CB5D00576DC0 /* ResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB034F5320D2CB5D00576DC0 /* ResponseModel.swift */; };
+		DB034F5620D3155200576DC0 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB034F5520D3155200576DC0 /* DataManager.swift */; };
 		DB6E2E5820D22B3E0073F54C /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6E2E5720D22B3E0073F54C /* RequestManager.swift */; };
 		DB6E2E5A20D22B4A0073F54C /* TokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6E2E5920D22B4A0073F54C /* TokenManager.swift */; };
 		DB6E2E5C20D237A80073F54C /* URLs.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6E2E5B20D237A80073F54C /* URLs.swift */; };
@@ -46,6 +48,8 @@
 		DB034F4D20D19E4200576DC0 /* SecretDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretDetailsViewController.swift; sourceTree = "<group>"; };
 		DB034F4F20D1C36700576DC0 /* NewSecretViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSecretViewController.swift; sourceTree = "<group>"; };
 		DB034F5120D1C38400576DC0 /* NewSecretViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewSecretViewController.storyboard; sourceTree = "<group>"; };
+		DB034F5320D2CB5D00576DC0 /* ResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseModel.swift; sourceTree = "<group>"; };
+		DB034F5520D3155200576DC0 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		DB6E2E5720D22B3E0073F54C /* RequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestManager.swift; sourceTree = "<group>"; };
 		DB6E2E5920D22B4A0073F54C /* TokenManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenManager.swift; sourceTree = "<group>"; };
 		DB6E2E5B20D237A80073F54C /* URLs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLs.swift; sourceTree = "<group>"; };
@@ -159,6 +163,7 @@
 			children = (
 				DB783ECA20CE395800401FF8 /* Secret.swift */,
 				DB783ECF20CE46D700401FF8 /* UserInfo.swift */,
+				DB034F5320D2CB5D00576DC0 /* ResponseModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -182,6 +187,7 @@
 				DBC5FB4020D0EC6F00666634 /* cells */,
 				DB6E2E5520D22B020073F54C /* ViewControllers */,
 				DB6E2E5620D22B140073F54C /* APIManager */,
+				DB034F5520D3155200576DC0 /* DataManager.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -290,12 +296,14 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-TheKey/Pods-TheKey-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/IHKeyboardAvoiding/IHKeyboardAvoiding.framework",
+				"${BUILT_PRODUCTS_DIR}/KeychainSwift/KeychainSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IHKeyboardAvoiding.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -338,6 +346,7 @@
 				DBC5FB3B20D0E20900666634 /* UIColor.swift in Sources */,
 				DB783ECB20CE395800401FF8 /* Secret.swift in Sources */,
 				DB783ECE20CE3FC100401FF8 /* String.swift in Sources */,
+				DB034F5620D3155200576DC0 /* DataManager.swift in Sources */,
 				DB034F4620D17CAE00576DC0 /* BaseViewController.swift in Sources */,
 				DBC5FB4820D21A7400666634 /* CreateNewAccountViewController.swift in Sources */,
 				DBC5FB4220D0EC9B00666634 /* SecretTableViewCell.swift in Sources */,
@@ -346,6 +355,7 @@
 				DB034F4A20D19B7700576DC0 /* SecretDetailsImageAndButtonTableViewCell.swift in Sources */,
 				DB034F4E20D19E4200576DC0 /* SecretDetailsViewController.swift in Sources */,
 				DB6E2E5C20D237A80073F54C /* URLs.swift in Sources */,
+				DB034F5420D2CB5D00576DC0 /* ResponseModel.swift in Sources */,
 				DB783EB620CDFE8900401FF8 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

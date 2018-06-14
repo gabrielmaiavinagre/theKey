@@ -10,4 +10,5 @@ target 'TheKey' do
 pod 'IHKeyboardAvoiding'
 pod 'Kingfisher', '~> 4.0'
 pod 'Alamofire', '~> 4.7'
+pod 'KeychainSwift', '~> 11.0'
 end

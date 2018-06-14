@@ -24,8 +24,8 @@ enum LoginButtonState: CGFloat {
     case disabled = 0.7
 }
 
-class LoginViewController: UIViewController, UITextFieldDelegate {
-    
+class LoginViewController: UIViewController, UITextFieldDelegate, APIResponseStatusProtocol {
+
     //Outlets
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -44,7 +44,22 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func createAccountAction(_ sender: UIButton) {
-//
+        
+       var secretsss = DataManager.getAllData(username: "gabrielUser")
+        
+        var secret = Secret(name: "segredo1", username: "user1", password: "senha1")
+        var secret2 = Secret(name: "segredo2", username: "user2", password: "senha2")
+        DataManager.saveData(username: "gabrielUser", secret: secret)
+        DataManager.saveData(username: "gabrielUser", secret: secret2)
+        
+        secretsss = DataManager.getAllData(username: "gabrielUser")
+        DataManager.deleteSecret(username: "gabrielUser", secret: secret)
+        secretsss = DataManager.getAllData(username: "gabrielUser")
+        
+        
+        
+//        RequestManager.createAccount(user: userInfo, delegate: self)
+        
 //        let parameters = [
 //            "email":"GABRI79@email.com",
 //            "name":"Igor Silva",
@@ -191,6 +206,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         self.userInfo.changePassword("")
         isLoginButtonEnabled(false)
         
+    }
+    
+    func didSucceed(token: String) {
+        print("token: ", token)
+    }
+    
+    func didFailed(error: String) {
+        print("error: ", error)
     }
     
 }
