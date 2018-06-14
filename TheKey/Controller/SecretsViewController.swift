@@ -12,7 +12,8 @@ class SecretsViewController: BaseViewController, UITableViewDelegate, UITableVie
 
      @IBOutlet weak var tableView: UITableView!
     
-    var secrets = [Secret]()
+    private var secrets = [Secret]()
+    private var viewControllerTitle = "Segredos"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,13 +23,12 @@ class SecretsViewController: BaseViewController, UITableViewDelegate, UITableVie
 
     //Configure viewcontroller
     private func viewControllerConfigurations() {
-        if let nav = self.navigationController {
-            print("existe")
-        }
 
         self.navigationController?.setNavigationBarHidden(false, animated: false)
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        self.navBarWithAddNewSecretButton()
+        self.title = viewControllerTitle
     }
 
      func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -63,7 +63,12 @@ class SecretsViewController: BaseViewController, UITableViewDelegate, UITableVie
         let secretInfoVC = storyBoard.instantiateInitialViewController() as! SecretDetailsViewController
         secretInfoVC.passInformation(secret: secret)
         self.navigationController?.pushViewController(secretInfoVC, animated: true)
-        
+    }
+    
+    override func createNewSecret() {
+        let storyBoard = UIStoryboard(name: "NewSecretViewController", bundle: nil)
+        let newSecretVC = storyBoard.instantiateInitialViewController() as! NewSecretViewController
+        self.navigationController?.pushViewController(newSecretVC, animated: true)
     }
 
 }
