@@ -12,17 +12,20 @@ class SecretDetailsViewController: BaseViewController, UITableViewDelegate, UITa
 
     @IBOutlet weak var tableView: UITableView!
     
-    public var secret: Secret!
+    private var viewControllerTitle = "Segredo"
+    private var secret: Secret!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         viewControllerConfigurations()
+        
         // Do any additional setup after loading the view.
     }
 
     func viewControllerConfigurations() {
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        self.title = viewControllerTitle
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -51,6 +54,7 @@ class SecretDetailsViewController: BaseViewController, UITableViewDelegate, UITa
     //pass information between viewcontrollers
     public func passInformation(secret: Secret) {
         self.secret = secret
+
     }
 
 }
