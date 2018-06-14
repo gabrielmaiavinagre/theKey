@@ -11,68 +11,80 @@ import Alamofire
 
 enum RequestStatus {
     
-    case sucess
+    case success
     case error
+}
+
+
+protocol APIResponseStatusProtocol {
     
+    func didSucceed(token: String)
+    func didFailed(error: String)
 }
 
 class RequestManager {
     
     private static var token = ""
+    private static var delegate:  APIResponseStatusProtocol!
     
-    class func makeGenericRequest(url: String, parameters: [String: String], responseHandler: @escaping (_ response: RequestStatus, _ token: String, _ Error: String)->Void)  {
+    class func createAccountOrLoginRequest(url: String, parameters: [String: String], responseHandler: @escaping (_ response: RequestStatus, _ token: String, _ error: String)->Void)  {
         Alamofire.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON {
             
             response in
             
-            if let json = response.result.value as? [String: String], let status = json["type"] as? String {
-                print(json)
-                    if status == "error" {
-                        print("erro")
-                        if let message = json["message"] {
-                            return responseHandler(.error, "", message)
-                        }
-                        return responseHandler(.error, "", "")
-                    }
-                    else if status == "sucess"  {
-                        if let token = json["token"] as? String {
-                            self.token = token
-                            return responseHandler(.sucess, token, "" )
-                        }
-                    }
+            do {
+                let token = try ResponseModel(jsonReceived: response.result.value)
+                if let token = token?.getToken() {
+                   return responseHandler(.success, token, "")
+                }
+                return responseHandler(.error, "",  "Erro no recebimento do Token")
                 
-            }
-            else {
-                 return responseHandler(.error, "", "")
+            } catch SerializationError.error(let errorMessage) {
+                return responseHandler(.error, "", errorMessage)
+            } catch {
+                return responseHandler(.error, "", "")
             }
         }
-        
     }
     
-//    class func getSiteImage()-> String {
-//
-//    }
-//
-    class func createAccount(user: UserInfo , _ responseHandler: @escaping (_ response: RequestStatus, _ token: String, _ Error: String)->Void) {
+    class func createAccount(user: UserInfo , delegate: APIResponseStatusProtocol) {
 
-        let parameters = ["email": user.getUsername(),"name": user.getName(), "password": user.getPassword()]
-        
-        RequestManager.makeGenericRequest(url: URLs.createAccount, parameters: parameters, responseHandler: {
+        self.delegate = delegate
+//        let parameters = ["email": user.getUsername(),"name": user.getName(), "password": user.getPassword()]
+ let parameters = ["email": "GABRI79weD@email.com","name": "nome123", "password": "Senha@12346"]
+        createAccountOrLoginRequest(url: URLs.createAccount, parameters: parameters, responseHandler: {
             
-            (requestStatus, token, error) in
+            (status, token, error) in
             
-//            responseHandler(re)
+            if status == .success {
+                self.delegate.didSucceed(token: token)
+            }
+            else {
+                self.delegate.didFailed(error: error)
+            }
+        })
+    }
+    
+    class func login(user: UserInfo , delegate: APIResponseStatusProtocol) {
         
+        self.delegate = delegate
+        //        let parameters = ["email": user.getUsername(),"name": user.getName(), "password": user.getPassword()]
+        let parameters = ["email": "GABRI79weD@email.com","name": "nome123", "password": "Senha@12346"]
+        createAccountOrLoginRequest(url: URLs.login, parameters: parameters, responseHandler: {
+            
+            (status, token, error) in
+            
+            if status == .success {
+                self.delegate.didSucceed(token: token)
+            }
+            else {
+                self.delegate.didFailed(error: error)
+            }
             
         })
-        
     }
     
-
-//
-//    class func login() {
-//
-//    }
+    
     
     
 }
