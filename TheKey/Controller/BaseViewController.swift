@@ -23,8 +23,29 @@ class BaseViewController: UIViewController {
     
     func configurationNavBar() {
         self.navigationController?.navigationBar.barTintColor = UIColor.appPinkColor
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
-        self.navigationController?.navigationBar.tintColor = UIColor.white
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.appGoldenColor]
+        self.navigationController?.navigationBar.tintColor = UIColor.appGoldenColor
+        self.navigationController?.navigationBar.isTranslucent = false
+        
+    }
+    
+    func navBarWithAddNewSecretButton() {
+        let newSecretButton = UIBarButtonItem(image: #imageLiteral(resourceName: "addButton"), style: .plain, target: self, action: #selector(createNewSecret))
+        
+        self.navigationItem.rightBarButtonItem = newSecretButton
+    }
+    
+    func navBarWithSaveButton() {
+        let saveButton = UIBarButtonItem(title: "Salvar", style: .plain, target: self, action: #selector(saveSecret))
+        
+        self.navigationItem.rightBarButtonItem = saveButton
+    }
+    
+    @objc func saveSecret() {
+        
+    }
+    
+    @objc func createNewSecret() {
         
     }
 
