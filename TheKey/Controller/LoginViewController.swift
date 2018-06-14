@@ -36,6 +36,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     //normal variables
     private var userInfo: UserInfo!
     private var loginButtonOpacity = LoginButtonState.disabled.rawValue
+    private var viewControllerTitle = "Sair"
     
     @IBAction func loginInAction(_ sender: UIButton) {
         verifyIfLoginAndPasswordAreCorrected()
@@ -63,6 +64,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     //Configure viewcontroller
     private func viewControllerConfigurations() {
         self.navigationController?.setNavigationBarHidden(true, animated: false)
+        UIApplication.shared.statusBarStyle = .lightContent
+        self.title = viewControllerTitle
+        
         self.userInfo = UserInfo(username: "", password: "")
         self.incorrectPasswordLabel.isHidden = true
         self.usernameTextField.delegate = self
@@ -71,8 +75,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         self.isLoginButtonEnabled(false)
         self.usernameTextField.addTarget(self, action: #selector(verifyPassword), for: .editingChanged)
         self.passwordTextField.addTarget(self, action: #selector(verifyPassword), for: .editingChanged)
+        self.passwordTextField.isSecureTextEntry = true
         self.createAccountButton.layer.borderWidth = 1
         self.createAccountButton.layer.borderColor = UIColor.appPinkColor.cgColor
+        
+        guard let statusBar = UIApplication.shared.value(forKeyPath: "statusBarWindow.statusBar") as? UIView else { return }
+        
+        statusBar.backgroundColor = UIColor.appStatusBarColor
     }
     
     //Others functions
@@ -161,6 +170,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
         
     }
+    
+//    override var preferredStatusBarStyle: UIStatusBarStyle {
+//        return .lightContent
+//    }
     
     
     func resetScreen() {
