@@ -10,7 +10,7 @@ import UIKit
 import IHKeyboardAvoiding
 
 
-class CreateNewAccountViewController: UIViewController, UITextFieldDelegate {
+class CreateNewAccountViewController: UIViewController, UITextFieldDelegate, APIResponseStatusProtocol {
     
     //Outlets
     @IBOutlet weak var usernameTextField: UITextField!
@@ -35,6 +35,7 @@ class CreateNewAccountViewController: UIViewController, UITextFieldDelegate {
         
         if isPasswordFillingTheBasicsRequisits(password: self.userInfo.getPassword(), confirmPassword: confirmPasswordText) {
             print("send to api")
+            RequestManager.createAccount(user: userInfo, delegate: self)
         }
     }
     
@@ -185,6 +186,14 @@ class CreateNewAccountViewController: UIViewController, UITextFieldDelegate {
         self.userInfo.changePassword("")
         isLoginButtonEnabled(false)
         
+    }
+    
+    func didSucceed(token: String) {
+        print("Deu certo")
+    }
+    
+    func didFailed(error: String) {
+        print("deu errado")
     }
     
 }
