@@ -8,7 +8,7 @@
 
 import Foundation
 
-class SiteInfo {
+class Secret {
     
     private var name: String
     private var username: String

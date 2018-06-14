@@ -9,21 +9,8 @@
 import UIKit
 import IHKeyboardAvoiding
 
-enum typesLoginErrors: String {
-    
-    case lessThanEight = "senha com menos de 8 caracteres"
-    case passwordNotCorrect = "senha deve ter 1 número, 1 letra e 1 caractere especial"
-    case incorrectLogin = "senha ou usuário incorretos"
-    
-}
 
-enum LoginButtonState: CGFloat {
-    
-    case enabled = 1
-    case disabled = 0.7
-}
-
-class LoginViewController: UIViewController, UITextFieldDelegate {
+class CreateNewAccountViewController: UIViewController, UITextFieldDelegate {
     
     //Outlets
     @IBOutlet weak var usernameTextField: UITextField!
@@ -43,10 +30,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func createAccountAction(_ sender: UIButton) {
-   
-       let storyBoard = UIStoryboard(name: "SecretsViewController", bundle: nil)
+        
+        let storyBoard = UIStoryboard(name: "SecretsViewController", bundle: nil)
         if let secretVC = storyBoard.instantiateInitialViewController() {
-        self.navigationController?.pushViewController(secretVC, animated: true)
+            self.navigationController?.pushViewController(secretVC, animated: true)
         }
     }
     
@@ -171,19 +158,20 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
     }
     
-//    override var preferredStatusBarStyle: UIStatusBarStyle {
-//        return .lightContent
-//    }
+    //    override var preferredStatusBarStyle: UIStatusBarStyle {
+    //        return .lightContent
+    //    }
     
     
     func resetScreen() {
-//        self.usernameTextField.text = ""
+        //        self.usernameTextField.text = ""
         self.passwordTextField.text = ""
-//        self.userInfo.changeUsername("")
+        //        self.userInfo.changeUsername("")
         self.userInfo.changePassword("")
         isLoginButtonEnabled(false)
         
     }
     
 }
+
 
