@@ -14,6 +14,7 @@ enum typesLoginErrors: String {
     case lessThanEight = "senha com menos de 8 caracteres"
     case passwordNotCorrect = "senha deve ter 1 número, 1 letra e 1 caractere especial"
     case incorrectLogin = "senha ou usuário incorretos"
+    case passwordAndConfirmPasswordAreIncorrected = "senha e confirmação da senha estão diferentes"
     
 }
 
@@ -43,11 +44,19 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func createAccountAction(_ sender: UIButton) {
-   
-       let storyBoard = UIStoryboard(name: "SecretsViewController", bundle: nil)
-        if let secretVC = storyBoard.instantiateInitialViewController() {
-        self.navigationController?.pushViewController(secretVC, animated: true)
-        }
+//   
+//        let parameters = [
+//            "email":"GABRI79@email.com",
+//            "name":"Igor Silva",
+//            "password":"Senha@12346"
+//        
+//        ]
+        
+//        RequestManager.makeGenericRequest(url: "https://dev.people.com.ai/mobile/api/v2/register", parameters: parameters)
+//       let storyBoard = UIStoryboard(name: "CreateNewAccountViewController", bundle: nil)
+//        if let createNewAccountVC = storyBoard.instantiateInitialViewController() {
+//        self.navigationController?.pushViewController(createNewAccountVC, animated: true)
+//        }
     }
     
     //Lifecycle functions
@@ -67,7 +76,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         UIApplication.shared.statusBarStyle = .lightContent
         self.title = viewControllerTitle
         
-        self.userInfo = UserInfo(username: "", password: "")
+        self.userInfo = UserInfo(username: "", name: "", password: "")
         self.incorrectPasswordLabel.isHidden = true
         self.usernameTextField.delegate = self
         self.passwordTextField.delegate = self
@@ -91,13 +100,16 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         switch response {
         case .incorrectLogin:
-            text = typesLoginErrors.incorrectLogin.rawValue
+            text = response.rawValue
             
         case .lessThanEight:
-            text = typesLoginErrors.lessThanEight.rawValue
+            text = response.rawValue
             
         case .passwordNotCorrect:
-            text = typesLoginErrors.passwordNotCorrect.rawValue
+            text = response.rawValue
+            
+        case .passwordAndConfirmPasswordAreIncorrected:
+            text = response.rawValue
         }
         
         self.incorrectPasswordLabel.text = text
@@ -123,7 +135,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         if username != "" && password.count > 0 && password.count >= 8 {
             
-            self.userInfo = UserInfo(username: username, password: password)
+            self.userInfo = UserInfo(username: username, name: "", password: password)
             self.loginButton.isEnabled = true
             isLoginButtonEnabled(true)
         }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cag-CU-JmM">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -11,10 +11,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Login View Controller-->
+        <!--Create New Account View Controller-->
         <scene sceneID="Zpq-nb-teD">
             <objects>
-                <viewController id="cag-CU-JmM" customClass="LoginViewController" customModule="TheKey" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="cag-CU-JmM" customClass="CreateNewAccountViewController" customModule="TheKey" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Xhq-ED-oFX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -69,45 +69,8 @@
                                                     <constraint firstItem="Ljp-eb-3u9" firstAttribute="leading" secondItem="A4n-UR-MpI" secondAttribute="leading" constant="8" id="peN-gn-pQA"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oHO-HK-JKG">
-                                                <rect key="frame" x="0.0" y="53" width="300" height="41"/>
-                                                <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="passwordIcon" translatesAutoresizingMaskIntoConstraints="NO" id="Rax-a3-SMS">
-                                                        <rect key="frame" x="8" y="10" width="29" height="21"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="21" id="NB6-XH-HhA"/>
-                                                            <constraint firstAttribute="width" constant="29" id="zSj-GW-8IM"/>
-                                                        </constraints>
-                                                    </imageView>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Digite sua senha" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jCR-br-rvI">
-                                                        <rect key="frame" x="57" y="14" width="243" height="17"/>
-                                                        <nil key="textColor"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" returnKeyType="go" textContentType="password"/>
-                                                    </textField>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oXh-VA-D6h">
-                                                        <rect key="frame" x="57" y="33" width="243" height="1"/>
-                                                        <color key="backgroundColor" red="1" green="0.73775506020000003" blue="0.06645579636" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="1" id="OjL-4M-bxP"/>
-                                                        </constraints>
-                                                    </view>
-                                                </subviews>
-                                                <constraints>
-                                                    <constraint firstItem="jCR-br-rvI" firstAttribute="bottom" secondItem="Rax-a3-SMS" secondAttribute="bottom" id="0eu-l8-opm"/>
-                                                    <constraint firstItem="oXh-VA-D6h" firstAttribute="width" secondItem="jCR-br-rvI" secondAttribute="width" id="6Qo-J8-POk"/>
-                                                    <constraint firstItem="oXh-VA-D6h" firstAttribute="trailing" secondItem="jCR-br-rvI" secondAttribute="trailing" id="70p-8P-aja"/>
-                                                    <constraint firstItem="oXh-VA-D6h" firstAttribute="leading" secondItem="jCR-br-rvI" secondAttribute="leading" id="7Wn-8N-Xja"/>
-                                                    <constraint firstItem="Rax-a3-SMS" firstAttribute="top" secondItem="oHO-HK-JKG" secondAttribute="top" constant="10" id="DFY-iD-wZr"/>
-                                                    <constraint firstAttribute="bottom" secondItem="Rax-a3-SMS" secondAttribute="bottom" constant="10" id="HMm-uS-OLc"/>
-                                                    <constraint firstItem="oXh-VA-D6h" firstAttribute="top" secondItem="jCR-br-rvI" secondAttribute="bottom" constant="2" id="KAo-L1-fmP"/>
-                                                    <constraint firstItem="jCR-br-rvI" firstAttribute="leading" secondItem="Rax-a3-SMS" secondAttribute="trailing" constant="20" id="hw7-Zv-27s"/>
-                                                    <constraint firstItem="Rax-a3-SMS" firstAttribute="leading" secondItem="oHO-HK-JKG" secondAttribute="leading" constant="8" id="org-OF-w07"/>
-                                                    <constraint firstAttribute="trailing" secondItem="jCR-br-rvI" secondAttribute="trailing" id="phI-yy-u44"/>
-                                                </constraints>
-                                            </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RLV-ad-MGP">
-                                                <rect key="frame" x="0.0" y="101" width="300" height="41"/>
+                                                <rect key="frame" x="0.0" y="53" width="300" height="41"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="passwordIcon" translatesAutoresizingMaskIntoConstraints="NO" id="tg2-Ax-Imk">
                                                         <rect key="frame" x="8" y="10" width="29" height="21"/>
@@ -141,6 +104,43 @@
                                                     <constraint firstAttribute="bottom" secondItem="tg2-Ax-Imk" secondAttribute="bottom" constant="10" id="hvO-u9-88P"/>
                                                     <constraint firstItem="3CK-x0-UnO" firstAttribute="leading" secondItem="tg2-Ax-Imk" secondAttribute="trailing" constant="20" id="tSO-kc-HR7"/>
                                                     <constraint firstItem="voz-IK-6vV" firstAttribute="leading" secondItem="3CK-x0-UnO" secondAttribute="leading" id="z8b-LR-bIv"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oHO-HK-JKG">
+                                                <rect key="frame" x="0.0" y="101" width="300" height="41"/>
+                                                <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="passwordIcon" translatesAutoresizingMaskIntoConstraints="NO" id="Rax-a3-SMS">
+                                                        <rect key="frame" x="8" y="10" width="29" height="21"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="21" id="NB6-XH-HhA"/>
+                                                            <constraint firstAttribute="width" constant="29" id="zSj-GW-8IM"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Confirme a sua senha" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jCR-br-rvI">
+                                                        <rect key="frame" x="57" y="14" width="243" height="17"/>
+                                                        <nil key="textColor"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" returnKeyType="go" textContentType="password"/>
+                                                    </textField>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oXh-VA-D6h">
+                                                        <rect key="frame" x="57" y="33" width="243" height="1"/>
+                                                        <color key="backgroundColor" red="1" green="0.73775506020000003" blue="0.06645579636" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="1" id="OjL-4M-bxP"/>
+                                                        </constraints>
+                                                    </view>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="jCR-br-rvI" firstAttribute="bottom" secondItem="Rax-a3-SMS" secondAttribute="bottom" id="0eu-l8-opm"/>
+                                                    <constraint firstItem="oXh-VA-D6h" firstAttribute="width" secondItem="jCR-br-rvI" secondAttribute="width" id="6Qo-J8-POk"/>
+                                                    <constraint firstItem="oXh-VA-D6h" firstAttribute="trailing" secondItem="jCR-br-rvI" secondAttribute="trailing" id="70p-8P-aja"/>
+                                                    <constraint firstItem="oXh-VA-D6h" firstAttribute="leading" secondItem="jCR-br-rvI" secondAttribute="leading" id="7Wn-8N-Xja"/>
+                                                    <constraint firstItem="Rax-a3-SMS" firstAttribute="top" secondItem="oHO-HK-JKG" secondAttribute="top" constant="10" id="DFY-iD-wZr"/>
+                                                    <constraint firstAttribute="bottom" secondItem="Rax-a3-SMS" secondAttribute="bottom" constant="10" id="HMm-uS-OLc"/>
+                                                    <constraint firstItem="oXh-VA-D6h" firstAttribute="top" secondItem="jCR-br-rvI" secondAttribute="bottom" constant="2" id="KAo-L1-fmP"/>
+                                                    <constraint firstItem="jCR-br-rvI" firstAttribute="leading" secondItem="Rax-a3-SMS" secondAttribute="trailing" constant="20" id="hw7-Zv-27s"/>
+                                                    <constraint firstItem="Rax-a3-SMS" firstAttribute="leading" secondItem="oHO-HK-JKG" secondAttribute="leading" constant="8" id="org-OF-w07"/>
+                                                    <constraint firstAttribute="trailing" secondItem="jCR-br-rvI" secondAttribute="trailing" id="phI-yy-u44"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="11y-uZ-Wue">
@@ -186,7 +186,7 @@
                                                     <color key="titleColor" red="0.4232704639" green="0.1920326352" blue="0.51980829240000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="createAccountAction:" destination="cag-CU-JmM" eventType="touchUpInside" id="X9P-7g-HNQ"/>
+                                                    <action selector="backToLoginScreenAction:" destination="cag-CU-JmM" eventType="touchUpInside" id="tv7-Z3-NVR"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -224,7 +224,8 @@
                     <navigationItem key="navigationItem" id="a8u-3v-hur"/>
                     <connections>
                         <outlet property="avoidingView" destination="U1F-ru-MJ8" id="3KZ-Wh-r7e"/>
-                        <outlet property="createAccountButton" destination="jB1-AQ-RxB" id="5uo-8f-7R7"/>
+                        <outlet property="cancelButton" destination="jB1-AQ-RxB" id="fwI-pA-vxQ"/>
+                        <outlet property="confirmPasswordTextField" destination="3CK-x0-UnO" id="CaH-Ca-bLy"/>
                         <outlet property="incorrectPasswordLabel" destination="ROY-1Y-tGN" id="8ZG-8Z-F6p"/>
                         <outlet property="loginButton" destination="noB-VK-uEb" id="G1Q-aX-EJL"/>
                         <outlet property="passwordTextField" destination="jCR-br-rvI" id="201-aD-BWi"/>

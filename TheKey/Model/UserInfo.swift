@@ -8,14 +8,16 @@
 
 import Foundation
 
-class UserInfo {
+class UserInfo: Codable {
     
     private var username: String
     private var password: String
+    private var name: String
     
-    init(username: String, password: String) {
+    init(username: String, name: String, password: String) {
         self.username = username
         self.password = password
+        self.name = name
     }
     
     func getUsername() -> String {
@@ -33,5 +35,14 @@ class UserInfo {
     func changePassword(_ new: String) {
         self.username = new
     }
+    
+    func getName()-> String {
+        return self.name
+    }
+    
+    func changeName(_ new: String) {
+        self.name = new
+    }
+    
     
 }

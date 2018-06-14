@@ -15,10 +15,11 @@ class CreateNewAccountViewController: UIViewController, UITextFieldDelegate {
     //Outlets
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var confirmPasswordTextField: UITextField!
     @IBOutlet weak var avoidingView: UIView!
     @IBOutlet weak var incorrectPasswordLabel: UILabel!
     @IBOutlet weak var loginButton: UIButton!
-    @IBOutlet weak var createAccountButton: UIButton!
+    @IBOutlet weak var cancelButton: UIButton!
     
     //normal variables
     private var userInfo: UserInfo!
@@ -26,15 +27,25 @@ class CreateNewAccountViewController: UIViewController, UITextFieldDelegate {
     private var viewControllerTitle = "Sair"
     
     @IBAction func loginInAction(_ sender: UIButton) {
-        verifyIfLoginAndPasswordAreCorrected()
+        
+        guard let confirmPasswordText = self.confirmPasswordTextField.text else {
+            print("text field de confirmacao de sneha está vazio")
+            return
+        }
+        
+        if isPasswordFillingTheBasicsRequisits(password: self.userInfo.getPassword(), confirmPassword: confirmPasswordText) {
+            print("send to api")
+        }
     }
     
-    @IBAction func createAccountAction(_ sender: UIButton) {
+    @IBAction func backToLoginScreenAction(_ sender: UIButton) {
         
-        let storyBoard = UIStoryboard(name: "SecretsViewController", bundle: nil)
-        if let secretVC = storyBoard.instantiateInitialViewController() {
-            self.navigationController?.pushViewController(secretVC, animated: true)
-        }
+        
+        self.navigationController!.popViewController(animated: true)
+//        let storyBoard = UIStoryboard(name: "SecretsViewController", bundle: nil)
+//        if let secretVC = storyBoard.instantiateInitialViewController() {
+//            self.navigationController?.pushViewController(secretVC, animated: true)
+//        }
     }
     
     //Lifecycle functions
@@ -54,17 +65,18 @@ class CreateNewAccountViewController: UIViewController, UITextFieldDelegate {
         UIApplication.shared.statusBarStyle = .lightContent
         self.title = viewControllerTitle
         
-        self.userInfo = UserInfo(username: "", password: "")
+        self.userInfo = UserInfo(username: "",name: "", password: "")
         self.incorrectPasswordLabel.isHidden = true
         self.usernameTextField.delegate = self
         self.passwordTextField.delegate = self
+        self.confirmPasswordTextField.delegate = self
         self.loginButton.isEnabled = false
         self.isLoginButtonEnabled(false)
         self.usernameTextField.addTarget(self, action: #selector(verifyPassword), for: .editingChanged)
         self.passwordTextField.addTarget(self, action: #selector(verifyPassword), for: .editingChanged)
         self.passwordTextField.isSecureTextEntry = true
-        self.createAccountButton.layer.borderWidth = 1
-        self.createAccountButton.layer.borderColor = UIColor.appPinkColor.cgColor
+        self.cancelButton.layer.borderWidth = 1
+        self.cancelButton.layer.borderColor = UIColor.appPinkColor.cgColor
         
         guard let statusBar = UIApplication.shared.value(forKeyPath: "statusBarWindow.statusBar") as? UIView else { return }
         
@@ -78,13 +90,16 @@ class CreateNewAccountViewController: UIViewController, UITextFieldDelegate {
         
         switch response {
         case .incorrectLogin:
-            text = typesLoginErrors.incorrectLogin.rawValue
+            text = response.rawValue
             
         case .lessThanEight:
-            text = typesLoginErrors.lessThanEight.rawValue
+            text = response.rawValue
             
         case .passwordNotCorrect:
-            text = typesLoginErrors.passwordNotCorrect.rawValue
+            text = response.rawValue
+            
+        case .passwordAndConfirmPasswordAreIncorrected:
+            text = response.rawValue
         }
         
         self.incorrectPasswordLabel.text = text
@@ -94,6 +109,9 @@ class CreateNewAccountViewController: UIViewController, UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {   //delegate method
         
         if usernameTextField == textField {
+            confirmPasswordTextField.becomeFirstResponder()
+        }
+        else if confirmPasswordTextField == textField {
             passwordTextField.becomeFirstResponder()
         }
         else {
@@ -104,13 +122,13 @@ class CreateNewAccountViewController: UIViewController, UITextFieldDelegate {
     
     @objc func verifyPassword(sender: UITextField) {
         
-        guard let username = self.usernameTextField.text, let password = self.passwordTextField.text else {
+        guard let username = self.usernameTextField.text, let password = self.passwordTextField.text, let confirmPassword = self.confirmPasswordTextField.text else {
             return
         }
         
-        if username != "" && password.count > 0 && password.count >= 8 {
+        if username != "" && password.count > 0 && password.count >= 8 && confirmPassword.count >= 8 {
             
-            self.userInfo = UserInfo(username: username, password: password)
+            self.userInfo = UserInfo(username: username, name: "", password: password)
             self.loginButton.isEnabled = true
             isLoginButtonEnabled(true)
         }
@@ -120,7 +138,7 @@ class CreateNewAccountViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    func isPasswordFillingTheBasicsRequisits(password: String) -> Bool {
+    func isPasswordFillingTheBasicsRequisits(password: String, confirmPassword: String) -> Bool {
         
         if password.count < 8 {
             print("senha com menos de  8 caracteres")
@@ -128,10 +146,15 @@ class CreateNewAccountViewController: UIViewController, UITextFieldDelegate {
             resetScreen()
             return false
         }
-        if !password.isValidPassword() {
+        else if !password.isValidPassword() {
             incorrectPasswordLabelIsHidden(.passwordNotCorrect)
             resetScreen()
             print("senha invalida")
+            return false
+        }
+        else if password != confirmPassword {
+            incorrectPasswordLabelIsHidden(.passwordAndConfirmPasswordAreIncorrected)
+            resetScreen()
             return false
         }
         
@@ -139,12 +162,7 @@ class CreateNewAccountViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
-    func verifyIfLoginAndPasswordAreCorrected() {
-        if isPasswordFillingTheBasicsRequisits(password: self.userInfo.getPassword()) {
-            print("send to api")
-        }
-    }
-    
+
     func isLoginButtonEnabled(_ state: Bool) {
         
         if state {
@@ -158,14 +176,11 @@ class CreateNewAccountViewController: UIViewController, UITextFieldDelegate {
         
     }
     
-    //    override var preferredStatusBarStyle: UIStatusBarStyle {
-    //        return .lightContent
-    //    }
-    
     
     func resetScreen() {
         //        self.usernameTextField.text = ""
         self.passwordTextField.text = ""
+        self.confirmPasswordTextField.text = ""
         //        self.userInfo.changeUsername("")
         self.userInfo.changePassword("")
         isLoginButtonEnabled(false)
