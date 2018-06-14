@@ -44,7 +44,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func createAccountAction(_ sender: UIButton) {
-//   
+//
 //        let parameters = [
 //            "email":"GABRI79@email.com",
 //            "name":"Igor Silva",
@@ -182,10 +182,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
         
     }
-    
-//    override var preferredStatusBarStyle: UIStatusBarStyle {
-//        return .lightContent
-//    }
     
     
     func resetScreen() {
