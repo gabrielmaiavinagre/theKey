@@ -13,6 +13,7 @@ class NewSecretViewController: BaseViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var tableView: UITableView!
     private var secret: Secret?
     private var viewControllerTitle = "Novo Segredo"
+    private var numberOfCells = 3
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +29,7 @@ class NewSecretViewController: BaseViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return numberOfCells
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -63,6 +64,8 @@ class NewSecretViewController: BaseViewController, UITableViewDelegate, UITableV
     
     override func saveSecret() {
         
+        if let auth =  AuthenticationManager.getTouchId(), let  {
+            DataManager.saveData(username: auth.getUsername(), secret: <#T##Secret#>)}
     }
 
 }

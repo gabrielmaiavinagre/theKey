@@ -16,6 +16,7 @@ class CreateNewAccountViewController: UIViewController, UITextFieldDelegate, API
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmPasswordTextField: UITextField!
+    @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var avoidingView: UIView!
     @IBOutlet weak var incorrectPasswordLabel: UILabel!
     @IBOutlet weak var loginButton: UIButton!
@@ -70,6 +71,7 @@ class CreateNewAccountViewController: UIViewController, UITextFieldDelegate, API
         self.incorrectPasswordLabel.isHidden = true
         self.usernameTextField.delegate = self
         self.passwordTextField.delegate = self
+        self.usernameTextField.delegate = self
         self.confirmPasswordTextField.delegate = self
         self.loginButton.isEnabled = false
         self.isLoginButtonEnabled(false)
@@ -109,6 +111,10 @@ class CreateNewAccountViewController: UIViewController, UITextFieldDelegate, API
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {   //delegate method
         
+        if nameTextField == textField {
+            usernameTextField.becomeFirstResponder()
+        }
+        
         if usernameTextField == textField {
             confirmPasswordTextField.becomeFirstResponder()
         }
@@ -123,13 +129,13 @@ class CreateNewAccountViewController: UIViewController, UITextFieldDelegate, API
     
     @objc func verifyPassword(sender: UITextField) {
         
-        guard let username = self.usernameTextField.text, let password = self.passwordTextField.text, let confirmPassword = self.confirmPasswordTextField.text else {
+        guard let name = self.nameTextField.text, let username = self.usernameTextField.text, let password = self.passwordTextField.text, let confirmPassword = self.confirmPasswordTextField.text else {
             return
         }
         
-        if username != "" && password.count > 0 && password.count >= 8 && confirmPassword.count >= 8 {
+        if name != "", username != "" && password.count > 0 && password.count >= 8 && confirmPassword.count >= 8 {
             
-            self.userInfo = UserInfo(username: username, name: "", password: password)
+            self.userInfo = UserInfo(username: username, name: name, password: password)
             self.loginButton.isEnabled = true
             isLoginButtonEnabled(true)
         }
@@ -186,12 +192,25 @@ class CreateNewAccountViewController: UIViewController, UITextFieldDelegate, API
         isLoginButtonEnabled(false)
     }
     
+    func changeScreen() {
+        
+        let storyBoard = UIStoryboard(name: "SecretsViewController", bundle: nil)
+        if let secretsVC = storyBoard.instantiateInitialViewController() as? SecretsViewController {
+            secretsVC.receiveInfo(userInfo: self.userInfo)
+            self.navigationController?.pushViewController(secretsVC, animated: true)
+        }
+        resetScreen()
+        
+    }
+    
     func didSucceed(token: String) {
         print("Deu certo")
+        changeScreen()
     }
     
     func didFailed(error: String) {
         print("deu errado")
+        resetScreen()
     }
     
 }

@@ -16,6 +16,12 @@ enum SecretCellsTypes {
     
 }
 
+protocol getInfoFromTextFieldProtoCol {
+    
+    func getInfo(index: Int) 
+    
+}
+
 class NewSecretTableViewCell: UITableViewCell {
     @IBOutlet weak var cellImageView: UIImageView!
     @IBOutlet weak var cellTextField: UITextField!

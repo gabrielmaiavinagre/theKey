@@ -28,8 +28,9 @@ enum LoginButtonState: CGFloat {
 class LoginViewController: BaseViewController, UITextFieldDelegate, APIResponseStatusProtocol {
 
     //Outlets
+
     @IBOutlet weak var usernameTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!    
     @IBOutlet weak var avoidingView: UIView!
     @IBOutlet weak var incorrectPasswordLabel: UILabel!
     @IBOutlet weak var loginButton: UIButton!
@@ -228,9 +229,20 @@ class LoginViewController: BaseViewController, UITextFieldDelegate, APIResponseS
         
     }
     
+    func changeScreen() {
+        
+        let storyBoard = UIStoryboard(name: "SecretsViewController", bundle: nil)
+        if let secretsVC = storyBoard.instantiateInitialViewController() as? SecretsViewController {
+            secretsVC.receiveInfo(userInfo: self.userInfo)
+            self.navigationController?.pushViewController(secretsVC, animated: true)
+        }
+        resetScreen()
+        
+    }
     
     func didSucceed(token: String) {
         print("token: ", token)
+        changeScreen()
     }
     
     func didFailed(error: String) {

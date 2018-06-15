@@ -23,6 +23,11 @@ class SecretsViewController: BaseViewController, UITableViewDelegate, UITableVie
         viewControllerConfigurations()
         secrets.append(Secret(name: "www.teste123.com.br", username: "gabriel123", password: "teste123"))
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tableView.reloadData()
+    }
 
     //Configure viewcontroller
     private func viewControllerConfigurations() {
@@ -79,6 +84,10 @@ class SecretsViewController: BaseViewController, UITableViewDelegate, UITableVie
             prepareTouchID(isLoginVc: false, userInfo: userInfo)
             return
         }
+    }
+    
+    func receiveInfo(userInfo: UserInfo) {
+        self.userInfo = userInfo
     }
 
 }

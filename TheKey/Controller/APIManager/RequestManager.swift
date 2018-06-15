@@ -51,8 +51,8 @@ class RequestManager {
     class func createAccount(user: UserInfo , delegate: APIResponseStatusProtocol) {
 
         self.delegate = delegate
-//        let parameters = ["email": user.getUsername(),"name": user.getName(), "password": user.getPassword()]
- let parameters = ["email": "GABRI79weD@email.com","name": "nome123", "password": "Senha@12346"]
+        let parameters = ["email": user.getUsername(),"name": user.getName(), "password": user.getPassword()]
+// let parameters = ["email": "GABRI79weD@email.com","name": "nome123", "password": "Senha@12346"]
         createAccountOrLoginRequest(url: URLs.createAccount, parameters: parameters, responseHandler: {
             
             (status, token, error) in
@@ -69,8 +69,8 @@ class RequestManager {
     class func login(user: UserInfo , delegate: APIResponseStatusProtocol) {
         
         self.delegate = delegate
-        //        let parameters = ["email": user.getUsername(),"name": user.getName(), "password": user.getPassword()]
-        let parameters = ["email": "GABRI79weD@email.com","name": "nome123", "password": "Senha@12346"]
+                let parameters = ["email": user.getUsername(), "password": user.getPassword()]
+//        let parameters = ["email": "GABRI79weD@email.com","name": "nome123", "password": "Senha@12346"]
         createAccountOrLoginRequest(url: URLs.login, parameters: parameters, responseHandler: {
             
             (status, token, error) in
