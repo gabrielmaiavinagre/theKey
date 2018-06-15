@@ -9,6 +9,7 @@
 import UIKit
 import IHKeyboardAvoiding
 
+
 enum typesLoginErrors: String {
     
     case lessThanEight = "senha com menos de 8 caracteres"
@@ -24,7 +25,7 @@ enum LoginButtonState: CGFloat {
     case disabled = 0.7
 }
 
-class LoginViewController: UIViewController, UITextFieldDelegate, APIResponseStatusProtocol {
+class LoginViewController: BaseViewController, UITextFieldDelegate, APIResponseStatusProtocol {
 
     //Outlets
     @IBOutlet weak var usernameTextField: UITextField!
@@ -45,16 +46,16 @@ class LoginViewController: UIViewController, UITextFieldDelegate, APIResponseSta
     
     @IBAction func createAccountAction(_ sender: UIButton) {
         
-       var secretsss = DataManager.getAllData(username: "gabrielUser")
+//       var secretsss = DataManager.getAllData(username: "gabrielUser")
         
-        var secret = Secret(name: "segredo1", username: "user1", password: "senha1")
-        var secret2 = Secret(name: "segredo2", username: "user2", password: "senha2")
-        DataManager.saveData(username: "gabrielUser", secret: secret)
-        DataManager.saveData(username: "gabrielUser", secret: secret2)
-        
-        secretsss = DataManager.getAllData(username: "gabrielUser")
-        DataManager.deleteSecret(username: "gabrielUser", secret: secret)
-        secretsss = DataManager.getAllData(username: "gabrielUser")
+//        var secret = Secret(name: "segredo1", username: "user1", password: "senha1")
+//        var secret2 = Secret(name: "segredo2", username: "user2", password: "senha2")
+//        DataManager.saveData(username: "gabrielUser", secret: secret)
+//        DataManager.saveData(username: "gabrielUser", secret: secret2)
+//
+//        secretsss = DataManager.getAllData(username: "gabrielUser")
+//        DataManager.deleteSecret(username: "gabrielUser", secret: secret)
+//        secretsss = DataManager.getAllData(username: "gabrielUser")
         
         
         
@@ -73,6 +74,16 @@ class LoginViewController: UIViewController, UITextFieldDelegate, APIResponseSta
 //        self.navigationController?.pushViewController(createNewAccountVC, animated: true)
 //        }
     }
+    
+    @IBAction func touchIdAction(_ sender: Any) {
+        
+        if let auth = AuthenticationManager.getTouchId() {
+            prepareTouchID()
+            userInfo = auth
+        }
+        print("Sem registro de touch id")
+    }
+    
     
     //Lifecycle functions
     override func viewDidLoad() {
@@ -182,7 +193,17 @@ class LoginViewController: UIViewController, UITextFieldDelegate, APIResponseSta
     func verifyIfLoginAndPasswordAreCorrected() {
         if isPasswordFillingTheBasicsRequisits(password: self.userInfo.getPassword()) {
             print("send to api")
+            requestLogin(userInfo: userInfo)
         }
+    }
+    
+    func requestLogin(userInfo: UserInfo) {
+        
+        RequestManager.login(user: userInfo, delegate: self)
+    }
+    
+    override func touchIdAuthorized() {
+        requestLogin(userInfo: userInfo)
     }
     
     func isLoginButtonEnabled(_ state: Bool) {
@@ -198,7 +219,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate, APIResponseSta
         
     }
     
-    
     func resetScreen() {
 //        self.usernameTextField.text = ""
         self.passwordTextField.text = ""
@@ -207,6 +227,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, APIResponseSta
         isLoginButtonEnabled(false)
         
     }
+    
     
     func didSucceed(token: String) {
         print("token: ", token)

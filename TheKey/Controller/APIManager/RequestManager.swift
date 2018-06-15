@@ -85,6 +85,12 @@ class RequestManager {
     }
     
     
+    class func getImage(siteURL: String) {
+        
+    
+        
+    }
+    
     
     
 }

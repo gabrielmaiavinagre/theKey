@@ -17,6 +17,7 @@ class SecretDetailsViewController: BaseViewController, UITableViewDelegate, UITa
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configurationNavBar()
         viewControllerConfigurations()
         
         // Do any additional setup after loading the view.

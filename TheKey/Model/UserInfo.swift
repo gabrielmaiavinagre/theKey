@@ -8,7 +8,7 @@
 
 import Foundation
 
-class UserInfo: Codable {
+class UserInfo: NSObject, Codable {
     
     private var username: String
     private var password: String
@@ -18,6 +18,18 @@ class UserInfo: Codable {
         self.username = username
         self.password = password
         self.name = name
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        self.username = aDecoder.decodeObject(forKey: "username") as! String
+        self.password = aDecoder.decodeObject(forKey: "password") as! String
+        self.name = aDecoder.decodeObject(forKey: "name") as! String
+    }
+    
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(name, forKey: "name")
+        aCoder.encode(username, forKey: "username")
+        aCoder.encode(password, forKey: "password")
     }
     
     func getUsername() -> String {

@@ -16,6 +16,7 @@ class NewSecretViewController: BaseViewController, UITableViewDelegate, UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configurationNavBar()
         viewControllerConfigurations()
     }
     

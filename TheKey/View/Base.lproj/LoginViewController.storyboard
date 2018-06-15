@@ -131,7 +131,7 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="wdL-Fg-JbV">
-                                        <rect key="frame" x="98" y="367" width="274" height="113"/>
+                                        <rect key="frame" x="98" y="367" width="274" height="174.33333333333337"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Un-nB-f8D">
                                                 <rect key="frame" x="0.0" y="0.0" width="274" height="51.333333333333336"/>
@@ -143,8 +143,18 @@
                                                     <action selector="loginInAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bc9-zU-ng2"/>
                                                 </connections>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KE8-F9-1uQ">
+                                                <rect key="frame" x="0.0" y="61.333333333333314" width="274" height="51.333333333333343"/>
+                                                <color key="backgroundColor" red="0.42278060319999999" green="0.19080027939999999" blue="0.52049851420000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="LOGAR COM DIGITAL">
+                                                    <color key="titleColor" red="0.95456737280000004" green="0.72973912949999997" blue="0.21277225020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="touchIdAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Vg8-kb-3U2"/>
+                                                </connections>
+                                            </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vu4-wQ-Jh2">
-                                                <rect key="frame" x="0.0" y="61.333333333333314" width="274" height="51.666666666666657"/>
+                                                <rect key="frame" x="0.0" y="122.6666666666667" width="274" height="51.666666666666671"/>
                                                 <state key="normal" title="CRIAR CONTA">
                                                     <color key="titleColor" red="0.42327046394348145" green="0.19203263521194458" blue="0.51980829238891602" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
@@ -155,8 +165,10 @@
                                         </subviews>
                                         <color key="backgroundColor" red="0.23864459201074573" green="1" blue="0.95680574740868252" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
+                                            <constraint firstItem="KE8-F9-1uQ" firstAttribute="height" secondItem="2Un-nB-f8D" secondAttribute="height" id="A8x-me-az9"/>
                                             <constraint firstItem="Vu4-wQ-Jh2" firstAttribute="height" secondItem="2Un-nB-f8D" secondAttribute="height" id="nq8-bi-vSU"/>
                                             <constraint firstItem="2Un-nB-f8D" firstAttribute="width" secondItem="wdL-Fg-JbV" secondAttribute="width" id="sbo-uo-iPp"/>
+                                            <constraint firstItem="KE8-F9-1uQ" firstAttribute="width" secondItem="2Un-nB-f8D" secondAttribute="width" id="sox-ck-BoR"/>
                                         </constraints>
                                     </stackView>
                                 </subviews>

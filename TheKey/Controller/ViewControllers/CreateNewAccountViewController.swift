@@ -174,7 +174,6 @@ class CreateNewAccountViewController: UIViewController, UITextFieldDelegate, API
             self.loginButton.alpha = LoginButtonState.disabled.rawValue
             self.loginButton.isEnabled = false
         }
-        
     }
     
     
@@ -185,7 +184,6 @@ class CreateNewAccountViewController: UIViewController, UITextFieldDelegate, API
         //        self.userInfo.changeUsername("")
         self.userInfo.changePassword("")
         isLoginButtonEnabled(false)
-        
     }
     
     func didSucceed(token: String) {

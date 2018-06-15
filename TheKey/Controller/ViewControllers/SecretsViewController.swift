@@ -14,9 +14,12 @@ class SecretsViewController: BaseViewController, UITableViewDelegate, UITableVie
     
     private var secrets = [Secret]()
     private var viewControllerTitle = "Segredos"
+    private var userInfo: UserInfo!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configurationNavBar()
+        hasTouchIdRegistered()
         viewControllerConfigurations()
         secrets.append(Secret(name: "www.teste123.com.br", username: "gabriel123", password: "teste123"))
     }
@@ -69,6 +72,13 @@ class SecretsViewController: BaseViewController, UITableViewDelegate, UITableVie
         let storyBoard = UIStoryboard(name: "NewSecretViewController", bundle: nil)
         let newSecretVC = storyBoard.instantiateInitialViewController() as! NewSecretViewController
         self.navigationController?.pushViewController(newSecretVC, animated: true)
+    }
+    
+    func hasTouchIdRegistered() {
+        guard let _ = AuthenticationManager.getTouchId() else {
+            prepareTouchID(isLoginVc: false, userInfo: userInfo)
+            return
+        }
     }
 
 }

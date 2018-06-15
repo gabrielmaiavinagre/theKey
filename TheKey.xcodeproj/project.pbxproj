@@ -20,6 +20,7 @@
 		DB6E2E5820D22B3E0073F54C /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6E2E5720D22B3E0073F54C /* RequestManager.swift */; };
 		DB6E2E5A20D22B4A0073F54C /* TokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6E2E5920D22B4A0073F54C /* TokenManager.swift */; };
 		DB6E2E5C20D237A80073F54C /* URLs.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6E2E5B20D237A80073F54C /* URLs.swift */; };
+		DB6E2E6020D38D070073F54C /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6E2E5F20D38D070073F54C /* AuthenticationManager.swift */; };
 		DB783EB620CDFE8900401FF8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB783EB520CDFE8900401FF8 /* AppDelegate.swift */; };
 		DB783EB820CDFE8900401FF8 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB783EB720CDFE8900401FF8 /* LoginViewController.swift */; };
 		DB783EBB20CDFE8900401FF8 /* LoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB783EB920CDFE8900401FF8 /* LoginViewController.storyboard */; };
@@ -53,6 +54,7 @@
 		DB6E2E5720D22B3E0073F54C /* RequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestManager.swift; sourceTree = "<group>"; };
 		DB6E2E5920D22B4A0073F54C /* TokenManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenManager.swift; sourceTree = "<group>"; };
 		DB6E2E5B20D237A80073F54C /* URLs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLs.swift; sourceTree = "<group>"; };
+		DB6E2E5F20D38D070073F54C /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
 		DB783EB220CDFE8900401FF8 /* TheKey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheKey.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB783EB520CDFE8900401FF8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DB783EB720CDFE8900401FF8 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 				DB6E2E5520D22B020073F54C /* ViewControllers */,
 				DB6E2E5620D22B140073F54C /* APIManager */,
 				DB034F5520D3155200576DC0 /* DataManager.swift */,
+				DB6E2E5F20D38D070073F54C /* AuthenticationManager.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -356,6 +359,7 @@
 				DB034F4E20D19E4200576DC0 /* SecretDetailsViewController.swift in Sources */,
 				DB6E2E5C20D237A80073F54C /* URLs.swift in Sources */,
 				DB034F5420D2CB5D00576DC0 /* ResponseModel.swift in Sources */,
+				DB6E2E6020D38D070073F54C /* AuthenticationManager.swift in Sources */,
 				DB783EB620CDFE8900401FF8 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
