@@ -69,16 +69,16 @@ class LoginViewController: BaseViewController, UITextFieldDelegate, APIResponseS
 //        ]
         
 //        RequestManager.makeGenericRequest(url: "https://dev.people.com.ai/mobile/api/v2/register", parameters: parameters)
-//       let storyBoard = UIStoryboard(name: "CreateNewAccountViewController", bundle: nil)
-//        if let createNewAccountVC = storyBoard.instantiateInitialViewController() {
-//        self.navigationController?.pushViewController(createNewAccountVC, animated: true)
-//        }
+       let storyBoard = UIStoryboard(name: "CreateNewAccountViewController", bundle: nil)
+        if let createNewAccountVC = storyBoard.instantiateInitialViewController() {
+        self.navigationController?.pushViewController(createNewAccountVC, animated: true)
+        }
     }
     
     @IBAction func touchIdAction(_ sender: Any) {
         
         if let auth = AuthenticationManager.getTouchId() {
-            prepareTouchID()
+            prepareTouchID(isLoginVc: true, userInfo: self.userInfo)
             userInfo = auth
         }
         print("Sem registro de touch id")

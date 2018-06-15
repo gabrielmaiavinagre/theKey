@@ -56,4 +56,12 @@ class Secret: NSObject, NSCoding {
     func changePassword(_ new: String) {
         self.password = new
     }
+    
+    func getSiteHost()-> String {
+        
+        if let url = URL(string: self.getSiteName()) {
+            return url.host ?? ""
+        }
+        return ""
+    }
 }

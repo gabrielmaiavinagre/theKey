@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class SecretTableViewCell: UITableViewCell {
     
@@ -26,7 +27,15 @@ class SecretTableViewCell: UITableViewCell {
     }
     
     func configureCell(secret: Secret) {
-        self.siteImage.image = #imageLiteral(resourceName: "passwordIcon")
+        
+        if let modifier = RequestManager.getImageRequestModifier() {
+        
+        if let url = URL(string: secret.getSiteHost()) {
+//            self.siteImage.image?.kf.
+            
+            //setImage(with: url, placeholder: nil, options: [.requestModifier(modifier)])
+        }
+        }
         self.siteNameLabel.text = secret.getSiteName()
         self.siteUsernameLabel.text = secret.getUsernamer()
         

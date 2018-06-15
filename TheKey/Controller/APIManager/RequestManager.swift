@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import Kingfisher
 
 enum RequestStatus {
     
@@ -85,10 +86,14 @@ class RequestManager {
     }
     
     
-    class func getImage(siteURL: String) {
+    class func getImageRequestModifier()-> AnyModifier? {
         
-    
-        
+        let modifier = AnyModifier { request in
+            var r = request
+            r.setValue(self.token, forHTTPHeaderField: "Access-Token")
+            return r
+        }
+        return nil
     }
     
     
