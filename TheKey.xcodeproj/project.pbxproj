@@ -39,7 +39,6 @@
 		DBC5FB3F20D0E67C00666634 /* SecretsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBC5FB3E20D0E67C00666634 /* SecretsViewController.storyboard */; };
 		DBC5FB4220D0EC9B00666634 /* SecretTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC5FB4120D0EC9B00666634 /* SecretTableViewCell.swift */; };
 		DBC5FB4420D0ED9300666634 /* NoSecretsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC5FB4320D0ED9300666634 /* NoSecretsTableViewCell.swift */; };
-		DBC5FB4620D1E8C900666634 /* NewSecretTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC5FB4520D1E8C900666634 /* NewSecretTableViewCell.swift */; };
 		DBC5FB4820D21A7400666634 /* CreateNewAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC5FB4720D21A7400666634 /* CreateNewAccountViewController.swift */; };
 		DBC5FB4A20D21ABE00666634 /* CreateNewAccountViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBC5FB4920D21ABE00666634 /* CreateNewAccountViewController.storyboard */; };
 /* End PBXBuildFile section */
@@ -80,7 +79,6 @@
 		DBC5FB3E20D0E67C00666634 /* SecretsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SecretsViewController.storyboard; sourceTree = "<group>"; };
 		DBC5FB4120D0EC9B00666634 /* SecretTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretTableViewCell.swift; sourceTree = "<group>"; };
 		DBC5FB4320D0ED9300666634 /* NoSecretsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoSecretsTableViewCell.swift; sourceTree = "<group>"; };
-		DBC5FB4520D1E8C900666634 /* NewSecretTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSecretTableViewCell.swift; sourceTree = "<group>"; };
 		DBC5FB4720D21A7400666634 /* CreateNewAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewAccountViewController.swift; sourceTree = "<group>"; };
 		DBC5FB4920D21ABE00666634 /* CreateNewAccountViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateNewAccountViewController.storyboard; sourceTree = "<group>"; };
 		F09213EA2BFC12D5F771C808 /* Pods-TheKey.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheKey.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TheKey/Pods-TheKey.debug.xcconfig"; sourceTree = "<group>"; };
@@ -233,7 +231,6 @@
 				DBC5FB4120D0EC9B00666634 /* SecretTableViewCell.swift */,
 				DB034F4920D19B7700576DC0 /* SecretDetailsImageAndButtonTableViewCell.swift */,
 				DB034F4B20D19CC500576DC0 /* SecretDetailsPasswordTableViewCell.swift */,
-				DBC5FB4520D1E8C900666634 /* NewSecretTableViewCell.swift */,
 				DBC5FB4320D0ED9300666634 /* NoSecretsTableViewCell.swift */,
 			);
 			path = cells;
@@ -367,7 +364,6 @@
 				DB6E2E5A20D22B4A0073F54C /* TokenManager.swift in Sources */,
 				DB783EB820CDFE8900401FF8 /* LoginViewController.swift in Sources */,
 				DB034F5020D1C36700576DC0 /* NewSecretViewController.swift in Sources */,
-				DBC5FB4620D1E8C900666634 /* NewSecretTableViewCell.swift in Sources */,
 				DB6E2E6A20D59A5A0073F54C /* Protocols.swift in Sources */,
 				DB034F4C20D19CC500576DC0 /* SecretDetailsPasswordTableViewCell.swift in Sources */,
 				DBC5FB3D20D0E65900666634 /* SecretsViewController.swift in Sources */,
