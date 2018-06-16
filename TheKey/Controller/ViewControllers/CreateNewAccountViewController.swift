@@ -22,6 +22,7 @@ class CreateNewAccountViewController: UIViewController, UITextFieldDelegate, API
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
     
+    
     //normal variables
     private var userInfo: UserInfo!
     private var loginButtonOpacity = LoginButtonState.disabled.rawValue

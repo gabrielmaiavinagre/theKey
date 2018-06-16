@@ -18,15 +18,16 @@ class SecretsViewController: BaseViewController, UITableViewDelegate, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        reloadData()
         configurationNavBar()
         hasTouchIdRegistered()
         viewControllerConfigurations()
-        secrets.append(Secret(name: "www.teste123.com.br", username: "gabriel123", password: "teste123"))
+//        secrets.append(Secret(name: "www.teste123.com.br", username: "gabriel123", password: "teste123"))
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.tableView.reloadData()
+        reloadData()
     }
 
     //Configure viewcontroller
@@ -61,6 +62,22 @@ class SecretsViewController: BaseViewController, UITableViewDelegate, UITableVie
         self.goToSecretDetailsScreen(index: indexPath.row)
     }
     
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == UITableViewCellEditingStyle.delete) {
+            
+            guard let sct = secrets[indexPath.row] as? Secret  else {
+                print("segredo não foi encontrado")
+            }
+            
+            DataManager.deleteSecret(username: userInfo.getUsername(), secret: sct)
+            self.reloadData()
+        }
+    }
+    
     private func goToSecretDetailsScreen(index: Int) {
         
         guard let secret = self.secrets[index] as? Secret else {
@@ -80,6 +97,8 @@ class SecretsViewController: BaseViewController, UITableViewDelegate, UITableVie
     }
     
     func hasTouchIdRegistered() {
+        
+//        AuthenticationManager.setTouchId(userInfo: userInfo)
         guard let _ = AuthenticationManager.getTouchId() else {
             prepareTouchID(isLoginVc: false, userInfo: userInfo)
             return
@@ -88,6 +107,11 @@ class SecretsViewController: BaseViewController, UITableViewDelegate, UITableVie
     
     func receiveInfo(userInfo: UserInfo) {
         self.userInfo = userInfo
+    }
+    
+    func reloadData() {
+        self.secrets = DataManager.getAllData(username: userInfo.getUsername())
+        self.tableView.reloadData()
     }
 
 }

@@ -73,6 +73,9 @@ class BaseViewController: UIViewController {
                     }
                     else {
                         self.showAlertController("Touch ID Authentication Failed")
+                        if !isLoginVc {
+                            self.prepareTouchID(isLoginVc: false, userInfo: userInfo)
+                        }
                     }
             } )
         }

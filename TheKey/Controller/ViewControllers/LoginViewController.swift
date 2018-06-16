@@ -224,7 +224,7 @@ class LoginViewController: BaseViewController, UITextFieldDelegate, APIResponseS
 //        self.usernameTextField.text = ""
         self.passwordTextField.text = ""
 //        self.userInfo.changeUsername("")
-        self.userInfo.changePassword("")
+//        self.userInfo.changePassword("")
         isLoginButtonEnabled(false)
         
     }
