@@ -16,7 +16,7 @@ class DataManager {
     class func saveData(username: String, secret: Secret) {
         
         if allSecrets.count == 0 {
-            getAllData(username: username)
+           allSecrets = getAllData(username: username)
         }
         
         if findSecret(secret: secret) == nil {
@@ -28,6 +28,10 @@ class DataManager {
     }
     
     class func deleteSecret(username: String, secret: Secret) {
+        
+        if allSecrets.count == 0 {
+             allSecrets = getAllData(username: username)
+        }
         
         allSecrets = allSecrets.filter { $0 != secret }
         let data = transformToData(secret: allSecrets)
