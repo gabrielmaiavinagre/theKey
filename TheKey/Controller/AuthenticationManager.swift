@@ -31,6 +31,7 @@ class AuthenticationManager {
     
     class func transformToData(userInfo: UserInfo)-> Data {
         let data = NSKeyedArchiver.archivedData(withRootObject: userInfo)
+//        let data = NSKeyedArchiver.archivedData(withRootObject: <#T##Any#>)
         return data
     }
     

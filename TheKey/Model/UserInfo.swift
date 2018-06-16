@@ -8,13 +8,13 @@
 
 import Foundation
 
-class UserInfo: NSObject, Codable {
+class UserInfo: NSObject, NSCoding {
     
-    private var username: String
-    private var password: String
-    private var name: String
+    private var username: String = ""
+    private var password: String = ""
+    private var name: String = ""
     
-    init(username: String, name: String, password: String) {
+    init(username: String, name: String = "", password: String) {
         self.username = username
         self.password = password
         self.name = name
@@ -32,6 +32,13 @@ class UserInfo: NSObject, Codable {
         aCoder.encode(password, forKey: "password")
     }
     
+    override func isEqual(_ object: Any?) -> Bool {
+        if let otherObject = object as? UserInfo {
+            return self.name == otherObject.name && self.password == otherObject.password && self.username == otherObject.username
+        }
+        return false
+    }
+    
     func getUsername() -> String {
         return self.username
     }
@@ -45,7 +52,7 @@ class UserInfo: NSObject, Codable {
     }
     
     func changePassword(_ new: String) {
-        self.username = new
+        self.password = new
     }
     
     func getName()-> String {

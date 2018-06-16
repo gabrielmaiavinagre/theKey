@@ -33,6 +33,13 @@ class Secret: NSObject, NSCoding {
         aCoder.encode(password, forKey: "password")
     }
     
+    override func isEqual(_ object: Any?) -> Bool {
+        if let otherObject = object as? Secret {
+            return self.name == otherObject.name && self.password == otherObject.password && self.username == otherObject.username
+        }
+        return false
+    }
+    
     func getSiteName() -> String {
         return self.name
     }
