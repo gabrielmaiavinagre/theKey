@@ -8,12 +8,14 @@
 
 import UIKit
 
-class NewSecretViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
+class NewSecretViewController: BaseViewController  {
 
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var siteNameTextField: UITextField!
+    @IBOutlet weak var usernameTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    
     private var secret: Secret?
     private var viewControllerTitle = "Novo Segredo"
-    private var numberOfCells = 3
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,34 +25,7 @@ class NewSecretViewController: BaseViewController, UITableViewDelegate, UITableV
     
     private func viewControllerConfigurations() {
         self.title = viewControllerTitle
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
         self.navBarWithSaveButton()
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return numberOfCells
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "newSecretCellId") as! NewSecretTableViewCell
-        
-        switch indexPath.row {
-        case 0:
-            cell.configureCell(type: .siteName, fillTextField: self.secret?.getSiteName())
-            
-        case 1:
-            cell.configureCell(type: .username, fillTextField: self.secret?.getUsernamer())
-            
-        case 2:
-            cell.configureCell(type: .password, fillTextField: self.secret?.getPassword())
-
-        default:
-            print("não caiu em nenhum dos casos de configuracao da célula de novo segredo")
-        }
-        
-        return cell
     }
     
     //pass information between viewcontrollers
@@ -64,8 +39,17 @@ class NewSecretViewController: BaseViewController, UITableViewDelegate, UITableV
     
     override func saveSecret() {
         
-        if let auth =  AuthenticationManager.getTouchId(), let  {
-            DataManager.saveData(username: auth.getUsername(), secret: <#T##Secret#>)}
+        if let auth =  AuthenticationManager.getTouchId(), let siteName = self.siteNameTextField.text, let username = self.usernameTextField.text ,let password = self.passwordTextField.text {
+            
+            let secret = Secret(name: siteName, username: username, password: password)
+            
+            DataManager.saveData(username: auth.getUsername(), secret: secret)}
+    }
+    
+    func fillInformationsOnTextFields(secret: Secret) {
+        self.usernameTextField.text = secret.getUsernamer()
+        self.passwordTextField.text = secret.getPassword()
+        self.siteNameTextField.text = secret.getSiteName()
     }
 
 }
