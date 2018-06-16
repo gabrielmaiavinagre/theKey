@@ -25,7 +25,7 @@ protocol APIResponseStatusProtocol {
 
 class RequestManager {
     
-    private static var token = ""
+    private static var tokenReceived = ""
     private static var delegate:  APIResponseStatusProtocol!
     
     class func createAccountOrLoginRequest(url: String, parameters: [String: String], responseHandler: @escaping (_ response: RequestStatus, _ token: String, _ error: String)->Void)  {
@@ -35,8 +35,9 @@ class RequestManager {
             
             do {
                 let token = try ResponseModel(jsonReceived: response.result.value)
-                if let token = token?.getToken() {
-                   return responseHandler(.success, token, "")
+                if let tok = token?.getToken() {
+                    tokenReceived = tok
+                   return responseHandler(.success, tok, "")
                 }
                 return responseHandler(.error, "",  "Erro no recebimento do Token")
                 
@@ -52,7 +53,6 @@ class RequestManager {
 
         self.delegate = delegate
         let parameters = ["email": user.getUsername(),"name": user.getName(), "password": user.getPassword()]
-// let parameters = ["email": "GABRI79weD@email.com","name": "nome123", "password": "Senha@12346"]
         createAccountOrLoginRequest(url: URLs.createAccount, parameters: parameters, responseHandler: {
             
             (status, token, error) in
@@ -70,7 +70,6 @@ class RequestManager {
         
         self.delegate = delegate
                 let parameters = ["email": user.getUsername(), "password": user.getPassword()]
-//        let parameters = ["email": "GABRI79weD@email.com","name": "nome123", "password": "Senha@12346"]
         createAccountOrLoginRequest(url: URLs.login, parameters: parameters, responseHandler: {
             
             (status, token, error) in
@@ -86,16 +85,17 @@ class RequestManager {
     }
     
     
-    class func getImageRequestModifier()-> AnyModifier? {
-        
-        let modifier = AnyModifier { request in
-            var r = request
-            r.setValue(self.token, forHTTPHeaderField: "Access-Token")
-            return r
-        }
-        return nil
+//    class func getImageRequestModifier()-> AnyModifier? {
+//        
+//        let modifier = AnyModifier { request in
+//            var r = request
+//            r.setValue(self.tokenReceived, forHTTPHeaderField: "Access-Token")
+//            return r
+//        }
+//        return nil
+//    }
+    
+    class func getToken()-> String {
+        return tokenReceived
     }
-    
-    
-    
 }

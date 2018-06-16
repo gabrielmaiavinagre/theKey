@@ -40,6 +40,30 @@ class DataManager {
 
     }
     
+    class func saveSecrets(username: String, secrets: [Secret]) {
+        let keychain = KeychainSwift()
+        let data = transformToData(secret: allSecrets)
+        keychain.set(data, forKey: username)
+    }
+    
+    class func editSecret(username: String, oldSecret: Secret, secretEdited: Secret) {
+        
+        var secrets = [Secret]()
+        
+        for element in allSecrets {
+        
+            if element != oldSecret {
+                secrets.append(element)
+            }
+            else {
+                secrets.append(secretEdited)
+            }
+        }
+        allSecrets = secrets
+        saveSecrets(username: username, secrets: allSecrets)
+       
+    }
+    
     class func transformToData(secret: [Secret])-> Data {
         let data = NSKeyedArchiver.archivedData(withRootObject: allSecrets)
         return data
@@ -62,9 +86,11 @@ class DataManager {
 
     
     class func getAllData(username: String)-> [Secret] {
+        
         let keychain = KeychainSwift()
         if let arrayOfData = keychain.getData(username) as? Data {
             let arrayConverted: [Secret] = transformToObject(data: arrayOfData)
+            allSecrets = arrayConverted
         return arrayConverted
         }
        return [Secret]()

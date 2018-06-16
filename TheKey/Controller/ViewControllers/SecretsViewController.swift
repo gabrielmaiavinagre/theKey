@@ -15,6 +15,7 @@ class SecretsViewController: BaseViewController, UITableViewDelegate, UITableVie
     private var secrets = [Secret]()
     private var viewControllerTitle = "Segredos"
     private var userInfo: UserInfo!
+    private var indexOfASecretThatWillBeDeleted: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +23,6 @@ class SecretsViewController: BaseViewController, UITableViewDelegate, UITableVie
         configurationNavBar()
         hasTouchIdRegistered()
         viewControllerConfigurations()
-//        secrets.append(Secret(name: "www.teste123.com.br", username: "gabriel123", password: "teste123"))
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -36,12 +36,14 @@ class SecretsViewController: BaseViewController, UITableViewDelegate, UITableVie
         self.navigationController?.setNavigationBarHidden(false, animated: false)
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        self.tableView.separatorColor = UIColor.appPinkColor
         self.navBarWithAddNewSecretButton()
         self.title = viewControllerTitle
+        tableView.tableFooterView = UIView()
     }
 
      func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return secrets.count
+        return secrets.count == 0 ? 1 : secrets.count
     }
 
      func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -66,16 +68,30 @@ class SecretsViewController: BaseViewController, UITableViewDelegate, UITableVie
         return true
     }
     
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let deleteCustomButton = UITableViewRowAction(style: .default, title: "APAGAR", handler: {
+            
+            action, indexPath in
+            
+            self.indexOfASecretThatWillBeDeleted = indexPath.row
+            self.presentAlert(type: .delete, customTitle: nil, customMessage: nil, customButton1Title: nil, customButton2Title: nil)
+            
+        })
+        
+        deleteCustomButton.backgroundColor = UIColor.appPinkColor
+        
+        return [deleteCustomButton]
+
+    }
+    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if (editingStyle == UITableViewCellEditingStyle.delete) {
-            
-            guard let sct = secrets[indexPath.row] as? Secret  else {
-                print("segredo não foi encontrado")
-            }
-            
-            DataManager.deleteSecret(username: userInfo.getUsername(), secret: sct)
-            self.reloadData()
-        }
+        
+        
+//        if (editingStyle == UITableViewCellEditingStyle.delete) {
+////             self.indexOfASecretThatWillBeDeleted = indexPath.row
+////            self.presentAlert(type: .delete, customTitle: nil, customMessage: nil, customButton1Title: nil, customButton2Title: nil)
+//
+//        }
     }
     
     private func goToSecretDetailsScreen(index: Int) {
@@ -96,14 +112,6 @@ class SecretsViewController: BaseViewController, UITableViewDelegate, UITableVie
         self.navigationController?.pushViewController(newSecretVC, animated: true)
     }
     
-    func hasTouchIdRegistered() {
-        
-//        AuthenticationManager.setTouchId(userInfo: userInfo)
-        guard let _ = AuthenticationManager.getTouchId() else {
-            prepareTouchID(isLoginVc: false, userInfo: userInfo)
-            return
-        }
-    }
     
     func receiveInfo(userInfo: UserInfo) {
         self.userInfo = userInfo
@@ -113,5 +121,30 @@ class SecretsViewController: BaseViewController, UITableViewDelegate, UITableVie
         self.secrets = DataManager.getAllData(username: userInfo.getUsername())
         self.tableView.reloadData()
     }
+    
+    override func succeedToAuth() {
+        AuthenticationManager.setTouchId(userInfo: userInfo)
+    }
+    
+    override func failedToAuth() {
+        self.prepareTouchID()
+    }
+    
+    override func alertFirstButtonAction() {
+        
+        guard let index = indexOfASecretThatWillBeDeleted, let sct = secrets[index] as? Secret  else {
+            print("segredo não foi encontrado")
+            return
+        }
+        
+        DataManager.deleteSecret(username: userInfo.getUsername(), secret: sct)
+        self.reloadData()
+        
+    }
+    
+    override func alertSecondButtonAction() {
+        indexOfASecretThatWillBeDeleted = nil
+    }
+    
 
 }

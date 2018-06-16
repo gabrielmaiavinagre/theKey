@@ -46,7 +46,6 @@ class NewSecretTableViewCell: UITableViewCell {
             
         case .password:
             self.cellImageView.image = #imageLiteral(resourceName: "passwordIcon")
-//            self.cellTextField.isSecureTextEntry = true
             self.cellTextField.placeholder = "Digite a senha"
         
         case .siteName:

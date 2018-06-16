@@ -10,7 +10,7 @@ import UIKit
 import IHKeyboardAvoiding
 
 
-class CreateNewAccountViewController: UIViewController, UITextFieldDelegate, APIResponseStatusProtocol {
+class CreateNewAccountViewController: BaseViewController, UITextFieldDelegate, APIResponseStatusProtocol {
     
     //Outlets
     @IBOutlet weak var usernameTextField: UITextField!
@@ -43,12 +43,7 @@ class CreateNewAccountViewController: UIViewController, UITextFieldDelegate, API
     
     @IBAction func backToLoginScreenAction(_ sender: UIButton) {
         
-        
         self.navigationController!.popViewController(animated: true)
-//        let storyBoard = UIStoryboard(name: "SecretsViewController", bundle: nil)
-//        if let secretVC = storyBoard.instantiateInitialViewController() {
-//            self.navigationController?.pushViewController(secretVC, animated: true)
-//        }
     }
     
     //Lifecycle functions
@@ -79,6 +74,7 @@ class CreateNewAccountViewController: UIViewController, UITextFieldDelegate, API
         self.usernameTextField.addTarget(self, action: #selector(verifyPassword), for: .editingChanged)
         self.passwordTextField.addTarget(self, action: #selector(verifyPassword), for: .editingChanged)
         self.passwordTextField.isSecureTextEntry = true
+        self.confirmPasswordTextField.isSecureTextEntry = true
         self.cancelButton.layer.borderWidth = 1
         self.cancelButton.layer.borderColor = UIColor.appPinkColor.cgColor
         
@@ -185,10 +181,8 @@ class CreateNewAccountViewController: UIViewController, UITextFieldDelegate, API
     
     
     func resetScreen() {
-        //        self.usernameTextField.text = ""
         self.passwordTextField.text = ""
         self.confirmPasswordTextField.text = ""
-        //        self.userInfo.changeUsername("")
         self.userInfo.changePassword("")
         isLoginButtonEnabled(false)
     }
@@ -211,6 +205,8 @@ class CreateNewAccountViewController: UIViewController, UITextFieldDelegate, API
     
     func didFailed(error: String) {
         print("deu errado")
+        
+        self.presentAlert(type: .custom, customTitle: "Erro ao criar conta", customMessage: error, customButton1Title: "Compreendo", customButton2Title: nil)
         resetScreen()
     }
     

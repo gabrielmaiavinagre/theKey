@@ -9,32 +9,17 @@
 import UIKit
 import IHKeyboardAvoiding
 
-
-enum typesLoginErrors: String {
-    
-    case lessThanEight = "senha com menos de 8 caracteres"
-    case passwordNotCorrect = "senha deve ter 1 número, 1 letra e 1 caractere especial"
-    case incorrectLogin = "senha ou usuário incorretos"
-    case passwordAndConfirmPasswordAreIncorrected = "senha e confirmação da senha estão diferentes"
-    
-}
-
-enum LoginButtonState: CGFloat {
-    
-    case enabled = 1
-    case disabled = 0.7
-}
-
 class LoginViewController: BaseViewController, UITextFieldDelegate, APIResponseStatusProtocol {
-
+    
     //Outlets
-
+    
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!    
     @IBOutlet weak var avoidingView: UIView!
     @IBOutlet weak var incorrectPasswordLabel: UILabel!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var createAccountButton: UIButton!
+    @IBOutlet weak var touchIDButton: UIButton!
     
     //normal variables
     private var userInfo: UserInfo!
@@ -47,42 +32,15 @@ class LoginViewController: BaseViewController, UITextFieldDelegate, APIResponseS
     
     @IBAction func createAccountAction(_ sender: UIButton) {
         
-//       var secretsss = DataManager.getAllData(username: "gabrielUser")
-        
-//        var secret = Secret(name: "segredo1", username: "user1", password: "senha1")
-//        var secret2 = Secret(name: "segredo2", username: "user2", password: "senha2")
-//        DataManager.saveData(username: "gabrielUser", secret: secret)
-//        DataManager.saveData(username: "gabrielUser", secret: secret2)
-//
-//        secretsss = DataManager.getAllData(username: "gabrielUser")
-//        DataManager.deleteSecret(username: "gabrielUser", secret: secret)
-//        secretsss = DataManager.getAllData(username: "gabrielUser")
-        
-        
-        
-//        RequestManager.createAccount(user: userInfo, delegate: self)
-        
-//        let parameters = [
-//            "email":"GABRI79@email.com",
-//            "name":"Igor Silva",
-//            "password":"Senha@12346"
-//        
-//        ]
-        
-//        RequestManager.makeGenericRequest(url: "https://dev.people.com.ai/mobile/api/v2/register", parameters: parameters)
-       let storyBoard = UIStoryboard(name: "CreateNewAccountViewController", bundle: nil)
+        let storyBoard = UIStoryboard(name: "CreateNewAccountViewController", bundle: nil)
         if let createNewAccountVC = storyBoard.instantiateInitialViewController() {
-        self.navigationController?.pushViewController(createNewAccountVC, animated: true)
+            self.navigationController?.pushViewController(createNewAccountVC, animated: true)
         }
     }
     
     @IBAction func touchIdAction(_ sender: Any) {
         
-        if let auth = AuthenticationManager.getTouchId() {
-            prepareTouchID(isLoginVc: true, userInfo: self.userInfo)
-            userInfo = auth
-        }
-        print("Sem registro de touch id")
+        hasTouchIdRegistered()
     }
     
     
@@ -95,6 +53,18 @@ class LoginViewController: BaseViewController, UITextFieldDelegate, APIResponseS
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
+        if let userInfo = AuthenticationManager.getTouchId()  {
+            isTouchIDButtonEnabled(true)
+        }
+        else {
+            isTouchIDButtonEnabled(false)
+        }
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        incorrectPasswordLabel.isHidden = true
     }
     
     //Configure viewcontroller
@@ -114,6 +84,11 @@ class LoginViewController: BaseViewController, UITextFieldDelegate, APIResponseS
         self.passwordTextField.isSecureTextEntry = true
         self.createAccountButton.layer.borderWidth = 1
         self.createAccountButton.layer.borderColor = UIColor.appPinkColor.cgColor
+        
+        guard let userInfo = AuthenticationManager.getTouchId() else {
+            isTouchIDButtonEnabled(false)
+            return
+        }
         
         guard let statusBar = UIApplication.shared.value(forKeyPath: "statusBarWindow.statusBar") as? UIView else { return }
         
@@ -217,16 +192,11 @@ class LoginViewController: BaseViewController, UITextFieldDelegate, APIResponseS
             self.loginButton.alpha = LoginButtonState.disabled.rawValue
             self.loginButton.isEnabled = false
         }
-        
     }
     
     func resetScreen() {
-//        self.usernameTextField.text = ""
         self.passwordTextField.text = ""
-//        self.userInfo.changeUsername("")
-//        self.userInfo.changePassword("")
         isLoginButtonEnabled(false)
-        
     }
     
     func changeScreen() {
@@ -237,7 +207,6 @@ class LoginViewController: BaseViewController, UITextFieldDelegate, APIResponseS
             self.navigationController?.pushViewController(secretsVC, animated: true)
         }
         resetScreen()
-        
     }
     
     func didSucceed(token: String) {
@@ -247,7 +216,37 @@ class LoginViewController: BaseViewController, UITextFieldDelegate, APIResponseS
     
     func didFailed(error: String) {
         print("error: ", error)
+        self.presentAlert(type: .custom, customTitle: "Erro ao Logar", customMessage: error, customButton1Title: "Compreendo", customButton2Title: nil)
+        resetScreen()
     }
     
+    override func hasTouchIdRegistered() {
+        
+        guard let userInfo = AuthenticationManager.getTouchId() else {
+            doesntHaveTouchIDRegistered()
+            return
+        }
+        self.userInfo = userInfo
+        prepareTouchID()
+    }
+    
+    func isTouchIDButtonEnabled(_ isEnabled: Bool) {
+        touchIDButton.isEnabled = isEnabled
+        if isEnabled {
+            touchIDButton.alpha = LoginButtonState.enabled.rawValue
+        }
+        else {
+            touchIDButton.alpha = LoginButtonState.disabled.rawValue
+        }
+    }
+    
+    func  doesntHaveTouchIDRegistered() {
+        print("Sem cadastro do touch id")
+    }
+    
+    override func succeedToAuth() {
+        
+        requestLogin(userInfo: userInfo)
+    }
 }
 

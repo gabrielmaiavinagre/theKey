@@ -9,12 +9,11 @@
 import UIKit
 import LocalAuthentication
 
-class BaseViewController: UIViewController {
+class BaseViewController: UIViewController, AlertButtonsActionsProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
     }
     
     func configurationNavBar() {
@@ -37,6 +36,12 @@ class BaseViewController: UIViewController {
         self.navigationItem.rightBarButtonItem = saveButton
     }
     
+    func navBarWithEditButton() {
+        let editButton = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editSecret))
+        
+        self.navigationItem.rightBarButtonItem = editButton
+    }
+    
     @objc func saveSecret() {
         
     }
@@ -49,52 +54,143 @@ class BaseViewController: UIViewController {
         
     }
     
+    @objc func editSecret() {
+        
+    }
     
-    func prepareTouchID(isLoginVc: Bool, userInfo: UserInfo) {
+    func hasTouchIdRegistered() {
+        
+        guard let _ = AuthenticationManager.getTouchId() else {
+            prepareTouchID()
+            return
+        }
+    }
+    
+    func prepareTouchID() {
         let context = LAContext()
         var error: NSError?
         
-        // 2
         // check if Touch ID is available
         if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
-            // 3
+            
             let reason = "Authenticate with Touch ID"
             context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason, reply:
                 {(succes, error) in
-                    // 4
+                    
                     if succes {
-                        self.showAlertController("Touch ID Authentication Succeeded")
-                        if isLoginVc {
-                            self.touchIdAuthorized()
-                        }
-                        else {
-                            AuthenticationManager.setTouchId(userInfo: userInfo)
+                        DispatchQueue.main.async {
+                            self.showAlertController("Touch ID Authentication Succeeded", .succeed)
                         }
                     }
                     else {
-                        self.showAlertController("Touch ID Authentication Failed")
-                        if !isLoginVc {
-                            self.prepareTouchID(isLoginVc: false, userInfo: userInfo)
+                        DispatchQueue.main.async {
+                            self.showAlertController("Touch ID Authentication Failed", .failed)
                         }
                     }
             } )
         }
-            // 5
+        
         else {
-            showAlertController("Touch ID not available")
+            showAlertController("Touch ID not available", .error)
         }
     }
     
-    func showAlertController(_ message: String) {
+    func showAlertController(_ message: String, _ status: TouchIdStatus) {
         let alertController = UIAlertController(title: nil, message: message, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        
+        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: {
+            
+            void in
+            
+            switch status {
+                
+            case .succeed:
+                self.succeedToAuth()
+                
+            case .failed:
+                self.failedToAuth()
+                
+            case .error:
+                print("not available")
+            }
+            
+        }))
+        
+        
         present(alertController, animated: true, completion: nil)
     }
-
-
+    
+    func failedToAuth() {
+        
+    }
+    
+    func succeedToAuth() {
+        
+    }
+    
+    func presentAlert(type: TypesOfAlerts, customTitle: String?, customMessage: String?, customButton1Title: String?, customButton2Title: String?) {
+        
+        var title: String = ""
+        var message: String = ""
+        var button1Title: String = ""
+        var button2Title: String?
+        
+        switch type {
+        case .saved:
+            title = "SEGREDO SALVO :x"
+            message = "Você pode editar a qualquer momento as informações."
+            button1Title = "PERFEITO"
+            
+        case .delete:
+            title = "DESEJA EXCLUIR?"
+            message = "Essa ação é irreversível. Site a ser excluído: www.teste.com.br"
+            button1Title = "SIM"
+            button2Title = "Cancelar"
+            
+        case .custom:
+            if let titleAlert = customTitle, let messageAlert = customMessage, let bt1Title = customButton1Title {
+                
+                title = titleAlert
+                message = messageAlert
+                button1Title = bt1Title
+                
+                if let bt2Title = customButton2Title {
+                    button2Title = bt2Title
+                }
+            }
+            
+        case .registerTouchID:
+            title = "Cadastre o touch id"
+            message = "Iremos usar verificação por digital para você não precisar digitar a senha toda vez que for entrar no aplicativo."
+            button1Title = "perfeito"
+            
+        case .cannotSave:
+            title = "Não foi possível savar"
+            message = "Para salvar você precisa preencher todos os campos"
+            button1Title = "Perfeito"
+            
+        }
+        
+        
+        let storyBoard = UIStoryboard(name: "Alert", bundle: nil)
+        if let alertVC = storyBoard.instantiateInitialViewController() as? AlertViewController {
+            alertVC.passAlertInfo(title: title, message: message, button1Title: button1Title, button2Title: button2Title, delegate: self)
+            alertVC.modalTransitionStyle = .crossDissolve
+            alertVC.modalPresentationStyle = .overCurrentContext
+            self.navigationController?.present(alertVC, animated: true, completion: nil)
+        }
+        
+    }
+    
+    func alertFirstButtonAction() {
+    }
+    
+    func alertSecondButtonAction() {
+    }
+    
 }
 
 
-    
+
 
 

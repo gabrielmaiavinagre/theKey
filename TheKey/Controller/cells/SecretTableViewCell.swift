@@ -28,16 +28,27 @@ class SecretTableViewCell: UITableViewCell {
     
     func configureCell(secret: Secret) {
         
-        if let modifier = RequestManager.getImageRequestModifier() {
-        
-        if let url = URL(string: secret.getSiteHost()) {
-//            self.siteImage.image?.kf.
+        if let url = URL(string: URLs.getImage + secret.getSiteHost()) {
             
-            //setImage(with: url, placeholder: nil, options: [.requestModifier(modifier)])
+            let modifier = AnyModifier { request in
+                var r = request
+                r.setValue(RequestManager.getToken(), forHTTPHeaderField: "authorization")
+                return r
+            }
+            
+            self.siteImage.kf.setImage(with: url, placeholder: #imageLiteral(resourceName: "noImage"), options: [.requestModifier(modifier)], progressBlock: nil, completionHandler: {
+                (image, error, cacheType, imageUrl) in
+                
+                if let img = image {
+                    self.siteImage.image = img
+                }
+                
+            })
         }
-        }
+        
         self.siteNameLabel.text = secret.getSiteName()
         self.siteUsernameLabel.text = secret.getUsernamer()
+        self.siteImage.roundImage()
         
     }
 

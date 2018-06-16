@@ -8,8 +8,8 @@
 
 import UIKit
 
-class SecretDetailsViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
-
+class SecretDetailsViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource,  PassInformationBetweenViewControllersProtocol {
+    
     @IBOutlet weak var tableView: UITableView!
     
     private var viewControllerTitle = "Segredo"
@@ -19,16 +19,21 @@ class SecretDetailsViewController: BaseViewController, UITableViewDelegate, UITa
         super.viewDidLoad()
         configurationNavBar()
         viewControllerConfigurations()
-        
-        // Do any additional setup after loading the view.
+        navBarWithEditButton()
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        super.viewWillAppear(animated)
+        self.tableView.reloadData()
+    }
+    
     func viewControllerConfigurations() {
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.title = viewControllerTitle
     }
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 2
     }
@@ -40,7 +45,7 @@ class SecretDetailsViewController: BaseViewController, UITableViewDelegate, UITa
             let usernameCell = tableView.dequeueReusableCell(withIdentifier: "imageAndButtonCellId") as! SecretDetailsImageAndButtonTableViewCell
             usernameCell.configureCell(secret: self.secret)
             return usernameCell
-        
+            
         case 1:
             let passwordCell = tableView.dequeueReusableCell(withIdentifier: "passwordCellId") as! SecretDetailsPasswordTableViewCell
             passwordCell.configureCell(secret: self.secret)
@@ -49,13 +54,22 @@ class SecretDetailsViewController: BaseViewController, UITableViewDelegate, UITa
         default:
             return UITableViewCell()
         }
-        
     }
     
     //pass information between viewcontrollers
     public func passInformation(secret: Secret) {
         self.secret = secret
-
+        
     }
-
+    
+    override func editSecret() {
+        let storyBoard = UIStoryboard(name: "NewSecretViewController", bundle: nil)
+        let newSecretVC = storyBoard.instantiateInitialViewController() as! NewSecretViewController
+        newSecretVC.passInformation(secret: self.secret, viewControllerTitle: "Editar Segredo", delegate: self)
+        self.navigationController?.pushViewController(newSecretVC, animated: true)
+    }
+    
+    func passInformation(_ secret: Secret) {
+        self.secret = secret
+    }
 }

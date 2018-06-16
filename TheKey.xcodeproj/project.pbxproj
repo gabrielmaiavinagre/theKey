@@ -21,6 +21,11 @@
 		DB6E2E5A20D22B4A0073F54C /* TokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6E2E5920D22B4A0073F54C /* TokenManager.swift */; };
 		DB6E2E5C20D237A80073F54C /* URLs.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6E2E5B20D237A80073F54C /* URLs.swift */; };
 		DB6E2E6020D38D070073F54C /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6E2E5F20D38D070073F54C /* AuthenticationManager.swift */; };
+		DB6E2E6220D4C9B80073F54C /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6E2E6120D4C9B80073F54C /* UIImageView.swift */; };
+		DB6E2E6420D4D2C30073F54C /* Alert.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB6E2E6320D4D2C30073F54C /* Alert.storyboard */; };
+		DB6E2E6620D4D53D0073F54C /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6E2E6520D4D53D0073F54C /* AlertViewController.swift */; };
+		DB6E2E6A20D59A5A0073F54C /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6E2E6920D59A5A0073F54C /* Protocols.swift */; };
+		DB6E2E6C20D59A6A0073F54C /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6E2E6B20D59A6A0073F54C /* Enums.swift */; };
 		DB783EB620CDFE8900401FF8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB783EB520CDFE8900401FF8 /* AppDelegate.swift */; };
 		DB783EB820CDFE8900401FF8 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB783EB720CDFE8900401FF8 /* LoginViewController.swift */; };
 		DB783EBB20CDFE8900401FF8 /* LoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB783EB920CDFE8900401FF8 /* LoginViewController.storyboard */; };
@@ -55,6 +60,11 @@
 		DB6E2E5920D22B4A0073F54C /* TokenManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenManager.swift; sourceTree = "<group>"; };
 		DB6E2E5B20D237A80073F54C /* URLs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLs.swift; sourceTree = "<group>"; };
 		DB6E2E5F20D38D070073F54C /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
+		DB6E2E6120D4C9B80073F54C /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
+		DB6E2E6320D4D2C30073F54C /* Alert.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Alert.storyboard; sourceTree = "<group>"; };
+		DB6E2E6520D4D53D0073F54C /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AlertViewController.swift; path = TheKey/Controller/ViewControllers/AlertViewController.swift; sourceTree = SOURCE_ROOT; };
+		DB6E2E6920D59A5A0073F54C /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
+		DB6E2E6B20D59A6A0073F54C /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		DB783EB220CDFE8900401FF8 /* TheKey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheKey.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB783EB520CDFE8900401FF8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DB783EB720CDFE8900401FF8 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -108,12 +118,13 @@
 		DB6E2E5520D22B020073F54C /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				DB783EB720CDFE8900401FF8 /* LoginViewController.swift */,
 				DB034F4520D17CAE00576DC0 /* BaseViewController.swift */,
+				DB783EB720CDFE8900401FF8 /* LoginViewController.swift */,
 				DBC5FB4720D21A7400666634 /* CreateNewAccountViewController.swift */,
 				DB034F4D20D19E4200576DC0 /* SecretDetailsViewController.swift */,
 				DB034F4F20D1C36700576DC0 /* NewSecretViewController.swift */,
 				DBC5FB3C20D0E65900666634 /* SecretsViewController.swift */,
+				DB6E2E6520D4D53D0073F54C /* AlertViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -126,6 +137,16 @@
 				DB6E2E5920D22B4A0073F54C /* TokenManager.swift */,
 			);
 			path = APIManager;
+			sourceTree = "<group>";
+		};
+		DB6E2E6720D59A240073F54C /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				DB6E2E5620D22B140073F54C /* APIManager */,
+				DB034F5520D3155200576DC0 /* DataManager.swift */,
+				DB6E2E5F20D38D070073F54C /* AuthenticationManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 		DB783EA920CDFE8900401FF8 = {
@@ -153,6 +174,8 @@
 				DB783EC720CE389600401FF8 /* Model */,
 				DB783EC820CE38AF00401FF8 /* View */,
 				DB783EC920CE38BF00401FF8 /* Controller */,
+				DB6E2E6920D59A5A0073F54C /* Protocols.swift */,
+				DB6E2E6B20D59A6A0073F54C /* Enums.swift */,
 				DB783ECC20CE3FAA00401FF8 /* Extensions */,
 				DB783EBC20CDFE8900401FF8 /* Assets.xcassets */,
 				DB783EC120CDFE8900401FF8 /* Info.plist */,
@@ -179,6 +202,7 @@
 				DB034F4720D183A700576DC0 /* SecretDetailsViewController.storyboard */,
 				DB034F5120D1C38400576DC0 /* NewSecretViewController.storyboard */,
 				DBC5FB4920D21ABE00666634 /* CreateNewAccountViewController.storyboard */,
+				DB6E2E6320D4D2C30073F54C /* Alert.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -188,9 +212,7 @@
 			children = (
 				DBC5FB4020D0EC6F00666634 /* cells */,
 				DB6E2E5520D22B020073F54C /* ViewControllers */,
-				DB6E2E5620D22B140073F54C /* APIManager */,
-				DB034F5520D3155200576DC0 /* DataManager.swift */,
-				DB6E2E5F20D38D070073F54C /* AuthenticationManager.swift */,
+				DB6E2E6720D59A240073F54C /* Managers */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -199,6 +221,7 @@
 			isa = PBXGroup;
 			children = (
 				DB783ECD20CE3FC100401FF8 /* String.swift */,
+				DB6E2E6120D4C9B80073F54C /* UIImageView.swift */,
 				DBC5FB3A20D0E20900666634 /* UIColor.swift */,
 			);
 			path = Extensions;
@@ -284,6 +307,7 @@
 				DB783EBD20CDFE8900401FF8 /* Assets.xcassets in Resources */,
 				DBC5FB4A20D21ABE00666634 /* CreateNewAccountViewController.storyboard in Resources */,
 				DB783EBB20CDFE8900401FF8 /* LoginViewController.storyboard in Resources */,
+				DB6E2E6420D4D2C30073F54C /* Alert.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,6 +368,7 @@
 				DB783EB820CDFE8900401FF8 /* LoginViewController.swift in Sources */,
 				DB034F5020D1C36700576DC0 /* NewSecretViewController.swift in Sources */,
 				DBC5FB4620D1E8C900666634 /* NewSecretTableViewCell.swift in Sources */,
+				DB6E2E6A20D59A5A0073F54C /* Protocols.swift in Sources */,
 				DB034F4C20D19CC500576DC0 /* SecretDetailsPasswordTableViewCell.swift in Sources */,
 				DBC5FB3D20D0E65900666634 /* SecretsViewController.swift in Sources */,
 				DBC5FB3B20D0E20900666634 /* UIColor.swift in Sources */,
@@ -358,6 +383,9 @@
 				DB034F4A20D19B7700576DC0 /* SecretDetailsImageAndButtonTableViewCell.swift in Sources */,
 				DB034F4E20D19E4200576DC0 /* SecretDetailsViewController.swift in Sources */,
 				DB6E2E5C20D237A80073F54C /* URLs.swift in Sources */,
+				DB6E2E6C20D59A6A0073F54C /* Enums.swift in Sources */,
+				DB6E2E6620D4D53D0073F54C /* AlertViewController.swift in Sources */,
+				DB6E2E6220D4C9B80073F54C /* UIImageView.swift in Sources */,
 				DB034F5420D2CB5D00576DC0 /* ResponseModel.swift in Sources */,
 				DB6E2E6020D38D070073F54C /* AuthenticationManager.swift in Sources */,
 				DB783EB620CDFE8900401FF8 /* AppDelegate.swift in Sources */,
