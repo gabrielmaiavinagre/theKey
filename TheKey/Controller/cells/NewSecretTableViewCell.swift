@@ -8,13 +8,7 @@
 
 import UIKit
 
-enum SecretCellsTypes {
-    
-    case siteName
-    case username
-    case password
-    
-}
+
 
 protocol getInfoFromTextFieldProtoCol {
     

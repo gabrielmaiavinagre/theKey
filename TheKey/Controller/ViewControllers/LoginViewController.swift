@@ -12,7 +12,6 @@ import IHKeyboardAvoiding
 class LoginViewController: BaseViewController, UITextFieldDelegate, APIResponseStatusProtocol {
     
     //Outlets
-    
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!    
     @IBOutlet weak var avoidingView: UIView!
@@ -39,7 +38,6 @@ class LoginViewController: BaseViewController, UITextFieldDelegate, APIResponseS
     }
     
     @IBAction func touchIdAction(_ sender: Any) {
-        
         hasTouchIdRegistered()
     }
     
@@ -216,7 +214,7 @@ class LoginViewController: BaseViewController, UITextFieldDelegate, APIResponseS
     
     func didFailed(error: String) {
         print("error: ", error)
-        self.presentAlert(type: .custom, customTitle: "Erro ao Logar", customMessage: error, customButton1Title: "Compreendo", customButton2Title: nil)
+        self.presentAlert(type: .custom, customTitle: "Erro ao Logar", customMessage: error, customButton1Title: "ok", customButton2Title: nil)
         resetScreen()
     }
     

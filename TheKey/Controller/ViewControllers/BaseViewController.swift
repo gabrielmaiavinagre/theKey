@@ -139,7 +139,7 @@ class BaseViewController: UIViewController, AlertButtonsActionsProtocol {
         case .saved:
             title = "SEGREDO SALVO :x"
             message = "Você pode editar a qualquer momento as informações."
-            button1Title = "PERFEITO"
+            button1Title = "OK"
             
         case .delete:
             title = "DESEJA EXCLUIR?"
@@ -162,12 +162,12 @@ class BaseViewController: UIViewController, AlertButtonsActionsProtocol {
         case .registerTouchID:
             title = "Cadastre o touch id"
             message = "Iremos usar verificação por digital para você não precisar digitar a senha toda vez que for entrar no aplicativo."
-            button1Title = "perfeito"
+            button1Title = "OK"
             
         case .cannotSave:
-            title = "Não foi possível savar"
+            title = "Não foi possível salvar"
             message = "Para salvar você precisa preencher todos os campos"
-            button1Title = "Perfeito"
+            button1Title = "OK"
             
         }
         

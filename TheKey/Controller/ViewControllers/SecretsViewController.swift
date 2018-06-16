@@ -10,6 +10,7 @@ import UIKit
 
 class SecretsViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
 
+    //Outlets
      @IBOutlet weak var tableView: UITableView!
     
     private var secrets = [Secret]()
@@ -78,8 +79,7 @@ class SecretsViewController: BaseViewController, UITableViewDelegate, UITableVie
             
         })
         
-        deleteCustomButton.backgroundColor = UIColor.appPinkColor
-        
+        deleteCustomButton.backgroundColor = UIColor.appGreenColor
         return [deleteCustomButton]
 
     }

@@ -38,3 +38,11 @@ enum TypesOfAlerts {
     case custom
     case cannotSave
 }
+
+enum SecretCellsTypes {
+    
+    case siteName
+    case username
+    case password
+    
+}

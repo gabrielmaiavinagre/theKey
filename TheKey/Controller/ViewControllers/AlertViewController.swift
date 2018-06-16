@@ -8,12 +8,9 @@
 
 import UIKit
 
-
-
-
-
 class AlertViewController: UIViewController {
     
+    //Outlets
     @IBOutlet weak var alertTitleLabel: UILabel!
     @IBOutlet weak var alertMessageLabel: UILabel!
     

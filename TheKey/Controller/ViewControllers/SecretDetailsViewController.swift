@@ -10,6 +10,7 @@ import UIKit
 
 class SecretDetailsViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource,  PassInformationBetweenViewControllersProtocol {
     
+    //Outlets
     @IBOutlet weak var tableView: UITableView!
     
     private var viewControllerTitle = "Segredo"
@@ -35,7 +36,7 @@ class SecretDetailsViewController: BaseViewController, UITableViewDelegate, UITa
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return 3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -43,10 +44,15 @@ class SecretDetailsViewController: BaseViewController, UITableViewDelegate, UITa
         switch indexPath.row {
         case 0:
             let usernameCell = tableView.dequeueReusableCell(withIdentifier: "imageAndButtonCellId") as! SecretDetailsImageAndButtonTableViewCell
-            usernameCell.configureCell(secret: self.secret)
+            usernameCell.configureCell(secret: self.secret, type: .siteName)
             return usernameCell
             
         case 1:
+            let usernameCell = tableView.dequeueReusableCell(withIdentifier: "imageAndButtonCellId") as! SecretDetailsImageAndButtonTableViewCell
+            usernameCell.configureCell(secret: self.secret, type: .username)
+            return usernameCell
+            
+        case 2:
             let passwordCell = tableView.dequeueReusableCell(withIdentifier: "passwordCellId") as! SecretDetailsPasswordTableViewCell
             passwordCell.configureCell(secret: self.secret)
             return passwordCell

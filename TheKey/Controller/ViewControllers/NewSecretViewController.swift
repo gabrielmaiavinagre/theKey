@@ -8,10 +8,9 @@
 
 import UIKit
 
-
-
 class NewSecretViewController: BaseViewController {
 
+    //Outlets
     @IBOutlet weak var siteNameTextField: UITextField!
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!

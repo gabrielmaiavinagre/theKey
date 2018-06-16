@@ -26,9 +26,20 @@ class SecretDetailsImageAndButtonTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func configureCell(secret: Secret) {
-        self.usernameImage.image = #imageLiteral(resourceName: "usernameIcon")
-        self.siteURLButton.setTitle(secret.getUsernamer(), for: .normal)
+    func configureCell(secret: Secret, type: SecretCellsTypes) {
+        
+        switch type {
+        case .username:
+            self.usernameImage.image = #imageLiteral(resourceName: "usernameIcon")
+            self.siteURLButton.setTitle(secret.getUsernamer(), for: .normal)
+            
+        case .siteName:
+            self.usernameImage.image = #imageLiteral(resourceName: "urlIcon")
+            self.siteURLButton.setTitle(secret.getSiteName(), for: .normal)
+        default:
+            print("error")
+        }
+        
     }
 
 }

@@ -9,7 +9,6 @@
 import UIKit
 import IHKeyboardAvoiding
 
-
 class CreateNewAccountViewController: BaseViewController, UITextFieldDelegate, APIResponseStatusProtocol {
     
     //Outlets
@@ -206,7 +205,7 @@ class CreateNewAccountViewController: BaseViewController, UITextFieldDelegate, A
     func didFailed(error: String) {
         print("deu errado")
         
-        self.presentAlert(type: .custom, customTitle: "Erro ao criar conta", customMessage: error, customButton1Title: "Compreendo", customButton2Title: nil)
+        self.presentAlert(type: .custom, customTitle: "Erro ao criar conta", customMessage: error, customButton1Title: "ok", customButton2Title: nil)
         resetScreen()
     }
     

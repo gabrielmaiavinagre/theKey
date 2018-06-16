@@ -16,4 +16,6 @@ extension UIColor {
     
     static var appStatusBarColor = UIColor(red:0.29, green:0.09, blue:0.38, alpha:1.0)
     
+    static var appGreenColor = UIColor(red:0.25, green:0.87, blue:0.58, alpha:1.0)
+    
 }
