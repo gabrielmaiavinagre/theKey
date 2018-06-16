@@ -26,6 +26,7 @@
 		DB6E2E6620D4D53D0073F54C /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6E2E6520D4D53D0073F54C /* AlertViewController.swift */; };
 		DB6E2E6A20D59A5A0073F54C /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6E2E6920D59A5A0073F54C /* Protocols.swift */; };
 		DB6E2E6C20D59A6A0073F54C /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6E2E6B20D59A6A0073F54C /* Enums.swift */; };
+		DB6E2E7420D5A4830073F54C /* TheKeyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6E2E7320D5A4830073F54C /* TheKeyTests.swift */; };
 		DB783EB620CDFE8900401FF8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB783EB520CDFE8900401FF8 /* AppDelegate.swift */; };
 		DB783EB820CDFE8900401FF8 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB783EB720CDFE8900401FF8 /* LoginViewController.swift */; };
 		DB783EBB20CDFE8900401FF8 /* LoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB783EB920CDFE8900401FF8 /* LoginViewController.storyboard */; };
@@ -42,6 +43,16 @@
 		DBC5FB4820D21A7400666634 /* CreateNewAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC5FB4720D21A7400666634 /* CreateNewAccountViewController.swift */; };
 		DBC5FB4A20D21ABE00666634 /* CreateNewAccountViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBC5FB4920D21ABE00666634 /* CreateNewAccountViewController.storyboard */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		DB6E2E7620D5A4830073F54C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DB783EAA20CDFE8900401FF8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DB783EB120CDFE8900401FF8;
+			remoteInfo = TheKey;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		1E590C373FE35CDB916FD3CA /* Pods_TheKey.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TheKey.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -64,6 +75,9 @@
 		DB6E2E6520D4D53D0073F54C /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AlertViewController.swift; path = TheKey/Controller/ViewControllers/AlertViewController.swift; sourceTree = SOURCE_ROOT; };
 		DB6E2E6920D59A5A0073F54C /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		DB6E2E6B20D59A6A0073F54C /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		DB6E2E7120D5A4830073F54C /* TheKeyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TheKeyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DB6E2E7320D5A4830073F54C /* TheKeyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheKeyTests.swift; sourceTree = "<group>"; };
+		DB6E2E7520D5A4830073F54C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DB783EB220CDFE8900401FF8 /* TheKey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheKey.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB783EB520CDFE8900401FF8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DB783EB720CDFE8900401FF8 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -85,6 +99,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		DB6E2E6E20D5A4830073F54C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DB783EAF20CDFE8900401FF8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -147,10 +168,20 @@
 			path = Managers;
 			sourceTree = "<group>";
 		};
+		DB6E2E7220D5A4830073F54C /* TheKeyTests */ = {
+			isa = PBXGroup;
+			children = (
+				DB6E2E7320D5A4830073F54C /* TheKeyTests.swift */,
+				DB6E2E7520D5A4830073F54C /* Info.plist */,
+			);
+			path = TheKeyTests;
+			sourceTree = "<group>";
+		};
 		DB783EA920CDFE8900401FF8 = {
 			isa = PBXGroup;
 			children = (
 				DB783EB420CDFE8900401FF8 /* TheKey */,
+				DB6E2E7220D5A4830073F54C /* TheKeyTests */,
 				DB783EB320CDFE8900401FF8 /* Products */,
 				5D1BF1B354DD633AF61718E6 /* Pods */,
 				9B3D2E19400F52F545BE8964 /* Frameworks */,
@@ -161,6 +192,7 @@
 			isa = PBXGroup;
 			children = (
 				DB783EB220CDFE8900401FF8 /* TheKey.app */,
+				DB6E2E7120D5A4830073F54C /* TheKeyTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -239,6 +271,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		DB6E2E7020D5A4830073F54C /* TheKeyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DB6E2E7820D5A4830073F54C /* Build configuration list for PBXNativeTarget "TheKeyTests" */;
+			buildPhases = (
+				DB6E2E6D20D5A4830073F54C /* Sources */,
+				DB6E2E6E20D5A4830073F54C /* Frameworks */,
+				DB6E2E6F20D5A4830073F54C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DB6E2E7720D5A4830073F54C /* PBXTargetDependency */,
+			);
+			name = TheKeyTests;
+			productName = TheKeyTests;
+			productReference = DB6E2E7120D5A4830073F54C /* TheKeyTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		DB783EB120CDFE8900401FF8 /* TheKey */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = DB783EC420CDFE8900401FF8 /* Build configuration list for PBXNativeTarget "TheKey" */;
@@ -268,6 +318,11 @@
 				LastUpgradeCheck = 0910;
 				ORGANIZATIONNAME = gabrielVinagre;
 				TargetAttributes = {
+					DB6E2E7020D5A4830073F54C = {
+						CreatedOnToolsVersion = 9.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = DB783EB120CDFE8900401FF8;
+					};
 					DB783EB120CDFE8900401FF8 = {
 						CreatedOnToolsVersion = 9.1;
 						ProvisioningStyle = Automatic;
@@ -288,11 +343,19 @@
 			projectRoot = "";
 			targets = (
 				DB783EB120CDFE8900401FF8 /* TheKey */,
+				DB6E2E7020D5A4830073F54C /* TheKeyTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		DB6E2E6F20D5A4830073F54C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DB783EB020CDFE8900401FF8 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -356,6 +419,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		DB6E2E6D20D5A4830073F54C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DB6E2E7420D5A4830073F54C /* TheKeyTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DB783EAE20CDFE8900401FF8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -390,6 +461,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		DB6E2E7720D5A4830073F54C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DB783EB120CDFE8900401FF8 /* TheKey */;
+			targetProxy = DB6E2E7620D5A4830073F54C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		DB783EB920CDFE8900401FF8 /* LoginViewController.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -410,6 +489,38 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		DB6E2E7920D5A4830073F54C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4433HCMUDY;
+				INFOPLIST_FILE = TheKeyTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.gabrielVinagre.TheKeyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TheKey.app/TheKey";
+			};
+			name = Debug;
+		};
+		DB6E2E7A20D5A4830073F54C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4433HCMUDY;
+				INFOPLIST_FILE = TheKeyTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.gabrielVinagre.TheKeyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TheKey.app/TheKey";
+			};
+			name = Release;
+		};
 		DB783EC220CDFE8900401FF8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -552,6 +663,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		DB6E2E7820D5A4830073F54C /* Build configuration list for PBXNativeTarget "TheKeyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DB6E2E7920D5A4830073F54C /* Debug */,
+				DB6E2E7A20D5A4830073F54C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		DB783EAD20CDFE8900401FF8 /* Build configuration list for PBXProject "TheKey" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

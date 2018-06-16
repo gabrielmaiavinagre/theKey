@@ -40,6 +40,13 @@ class DataManager {
 
     }
     
+    class func deleteAllSecrets(username: String) {
+        allSecrets = [Secret]()
+        let data = transformToData(secret: allSecrets)
+        let keychain = KeychainSwift()
+        keychain.set(data, forKey: username)
+    }
+    
     class func saveSecrets(username: String, secrets: [Secret]) {
         let keychain = KeychainSwift()
         let data = transformToData(secret: allSecrets)
