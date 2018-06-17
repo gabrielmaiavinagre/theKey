@@ -56,6 +56,11 @@ class CreateNewAccountViewController: BaseViewController, UITextFieldDelegate, A
         self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        incorrectPasswordLabel.isHidden = true
+    }
+    
     //Configure viewcontroller
     private func viewControllerConfigurations() {
         self.navigationController?.setNavigationBarHidden(true, animated: false)
@@ -64,6 +69,7 @@ class CreateNewAccountViewController: BaseViewController, UITextFieldDelegate, A
         
         self.userInfo = UserInfo(username: "",name: "", password: "")
         self.incorrectPasswordLabel.isHidden = true
+        self.nameTextField.delegate = self
         self.usernameTextField.delegate = self
         self.passwordTextField.delegate = self
         self.usernameTextField.delegate = self
@@ -182,7 +188,6 @@ class CreateNewAccountViewController: BaseViewController, UITextFieldDelegate, A
     func resetScreen() {
         self.passwordTextField.text = ""
         self.confirmPasswordTextField.text = ""
-        self.userInfo.changePassword("")
         isLoginButtonEnabled(false)
     }
     

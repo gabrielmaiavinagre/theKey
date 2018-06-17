@@ -92,6 +92,7 @@ class BaseViewController: UIViewController, AlertButtonsActionsProtocol {
         
         else {
             showAlertController("Touch ID not available", .error)
+            
         }
     }
     
@@ -112,6 +113,7 @@ class BaseViewController: UIViewController, AlertButtonsActionsProtocol {
                 
             case .error:
                 print("not available")
+                self.navigationController?.popViewController(animated: true)
             }
             
         }))

@@ -193,6 +193,7 @@
                             <constraint firstItem="gDl-ul-jyt" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="65H-wI-yQG"/>
                             <constraint firstItem="gDl-ul-jyt" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="BVr-h2-ge1"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="gDl-ul-jyt" secondAttribute="bottom" id="Vlr-Gt-uUp"/>
+                            <constraint firstItem="gDl-ul-jyt" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="l41-I8-aly"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
